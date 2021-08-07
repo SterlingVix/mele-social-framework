@@ -1,4 +1,4 @@
-import { gv } from '../mockGlobals';
+import { gv } from '../MockGlobals';
 
 export const ints = {
   1: `Childhood	SFX.Utility.PlayerInfo.Childhood`,

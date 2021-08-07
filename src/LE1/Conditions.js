@@ -1,4 +1,4 @@
-import { gv } from './mockGlobals';
+import { gv } from './MockGlobals';
 
 // Functions
 const functions = {

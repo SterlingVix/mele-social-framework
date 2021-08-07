@@ -1,4 +1,4 @@
-import { gv } from '../mockGlobals';
+import { gv } from '../MockGlobals';
 
 export const transitions = {
   130: `First_Meeting_True`,

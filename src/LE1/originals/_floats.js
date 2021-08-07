@@ -1,4 +1,4 @@
-import { gv } from '../mockGlobals';
+import { gv } from '../MockGlobals';
 
 export const floats = {
   3: `Colonists_Killed_Float`,

@@ -5,7 +5,7 @@
 
 
  */
-import { gv } from '../mockGlobals';
+import { gv } from '../MockGlobals';
 
 
 
