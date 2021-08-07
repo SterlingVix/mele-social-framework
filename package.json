@@ -1,0 +1,12 @@
+{
+  "name": "mele-social-framework",
+  "version": "1.0.0",
+  "description": "Framework for nuanced social interactions for Mass Effect: Legendary Edition",
+  "main": "index.js",
+  "repository": "git@github.com:SterlingVix/mele-social-framework.git",
+  "author": "Aaron Melocik <amelocik@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "jest": "^27.0.6"
+  }
+}
