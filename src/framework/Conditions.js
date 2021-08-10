@@ -11,25 +11,17 @@ const conditionsNamed = {
 
   getRomanticInterestFor: (charId) => {
     const romanceSuffix = _.findKey(SocialStates)
-    return getInt
+    // return getInt
   }
 };
 
-export const genLe2CndTxt = (
+export const genConditionalText = (
   cndId,
   comment, // generate in iteration
   comparator,
-  intArgument,
-  socialStateId, // generate in iteration
+  socialStateId = 'Argument', // if provided, get this SocialStateId; otherwise accepts the Cnd argument.
+  intArgument = 'Argument', // if provided, compare against this; otherwise accepts the Cnd argument.
 ) => {
-  // Validate options
-  // const validGvTypes = ['bool', 'int'];
-  // if (!_.includes(validGvTypes, gvType)) {
-  //   throw new Error(`gvType must be one of ${validGvTypes}. Received ${gvType}.`);
-  // }
-  // const validComparators = gvType === 'int'
-  //   ? ['!=', '<', '<=', '==', '>', '>=']
-  //   : ['==', '!='];
   const validComparators = ['!=', '<', '<=', '==', '>', '>='];
   if (!_.includes(validComparators, comparator)) {
     throw new Error(`comparator must be one of ${validComparators}. Received ${comparator}.`);
@@ -44,16 +36,27 @@ export const genLe2CndTxt = (
    Do this for each comparator
    */
   return `
+
 // ${comment}  
 public function bool F${cndId}(BioWorldInfo bioWorld, int Argument)
 { 
   local BioGlobalVariableTable gv;
-
   gv = bioWorld.GetGlobalVariables();
   return gv.GetInt(${socialStateId}) ${comparator} Argument;
-}
-`;
+}`;
 };
+
+export const le2ConditionalsHint = `These functions are appended to PlotManager.pcc > BioAutoConditionals
+// Functions should look like this:
+//   public function bool F1194(BioWorldInfo bioWorld, int Argument)
+//   {
+//     local BioGlobalVariableTable gv;
+//   
+//     gv = bioWorld.GetGlobalVariables();
+//     return gv.GetBool(4266) == TRUE;
+//   }
+
+`;
 
 export default {
 };

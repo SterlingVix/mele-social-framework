@@ -1,4 +1,6 @@
-export default {
+import _ from "lodash";
+
+const Characters = {
   30: `Aria T'Loak`,
   31: `Armando-Owen Bailey`,
   32: `Ashley Williams`,
@@ -42,3 +44,9 @@ export default {
 
 export const getShortName = charName =>
   charName.split(/[ -']/)[0];
+
+export const forEachCharacter = (mapFunc) =>
+  _.forEach(Characters, mapFunc);
+
+
+export default Characters;

@@ -1,15 +1,10 @@
 import fs from 'fs';
-import path from 'path';
+import GlobalState, {getSocialFrameworkKey, IdToSocialState, ShepardStates, SocialStates, SocialStatesWithComparators,} from './framework/GlobalState.js';
+import {genConditionalText, le2ConditionalsHint,} from './framework/Conditions.js';
+import {BuildDir, LE1Dir, LE2CndFile, LE2Dir, LE3Dir, OutFile,} from './Paths.js';
+import {forEachCharacter, getShortName} from './framework/Characters.js';
+import _ from 'lodash';
 
-import GlobalState, {
-  getSocialFrameworkKey,
-  IdToSocialState,
-  ShepardStates,
-  SocialStates,
-  SocialStateToId,
-} from './framework/GlobalState.js';
-
-const _buildDir = path.resolve('./build');
 
 const makeDir = (dirPath) => {
   try {
@@ -28,56 +23,57 @@ const makeFile = (dirPath) => {
   }
 };
 const addContents = (dirPath, toWrite, comment) => {
+  const mainContent = (!_.isObject(toWrite) || toWrite === "")
+    ? toWrite
+    : JSON.stringify(toWrite, null, 2);
+
   if (comment) {
     fs.appendFileSync(dirPath, `// ${comment}
 `);
   }
-  fs.appendFileSync(dirPath, JSON.stringify(toWrite, null, 2));
-  fs.appendFileSync(dirPath, `
-
-`);
+  fs.appendFileSync(dirPath, mainContent);
+//   fs.appendFileSync(dirPath, `
+// `);
 };
 
-makeDir(_buildDir);
-const _outFile = path.resolve(_buildDir, 'out.txt');
-makeFile(_outFile);
+makeDir(BuildDir);
+makeFile(OutFile);
+
+makeDir(LE1Dir);
+makeDir(LE2Dir);
+makeDir(LE3Dir);
+const initLe2ConditionalsFile = () => {
+  makeFile(LE2CndFile);
+  addContents(LE2CndFile, '', le2ConditionalsHint);
+};
+
+initLe2ConditionalsFile();
+const writeConditionals = (conditionalsFile, leGamePrefix = 2) => {
+  forEachCharacter((charName, charIdStr) => {
+    _.forEach(SocialStatesWithComparators, ({comparator, socialStateName}, stateIdStr) => {
+      // const charShortName = getShortName(charName);
+      const comment = `LE${leGamePrefix} | ${charName} | ${socialStateName} ${comparator} [[Argument]]`;
+      const conditionId = getSocialFrameworkKey(charIdStr, stateIdStr, leGamePrefix);
+      const rootId = getSocialFrameworkKey(charIdStr, stateIdStr);
+
+      addContents(conditionalsFile, genConditionalText(
+        conditionId,
+        comment,
+        comparator,
+        rootId,
+      ));
+    });
+  });
+};
+writeConditionals(LE2CndFile, 2);
 
 
-const _le1Dir = path.resolve(_buildDir, 'LE1');
-const _le2Dir = path.resolve(_buildDir, 'LE2');
-const _le3Dir = path.resolve(_buildDir, 'LE3');
-makeDir(_le1Dir);
-makeDir(_le2Dir);
-makeDir(_le3Dir);
-const le2ConditionalsFiles = [
-  path.resolve(_le2Dir, 'PlotManager.pcc.txt'),
-];
-makeFile(le2ConditionalsFiles[0]);
-addContents(le2ConditionalsFiles[0], '', `
-/*
-// PlotManager.pcc > BioAutoConditionals has conditionals functions, like:
-
-Class BioAutoConditionals extends BioConditionals;
-
-// Functions
-public function bool F1194(BioWorldInfo bioWorld, int Argument)
-{
-  local BioGlobalVariableTable gv;
-
-  gv = bioWorld.GetGlobalVariables();
-  return gv.GetBool(4266) == TRUE;
-}
-*/
-`);
-
-
-
-addContents(_outFile, GlobalState, 'GlobalState');
-// addContents(_outFile, getSocialFrameworkKey, 'getSocialFrameworkKey');
-addContents(_outFile, IdToSocialState, 'IdToSocialState');
-addContents(_outFile, ShepardStates, 'ShepardStates');
-addContents(_outFile, SocialStates, 'SocialStates');
-// addContents(_outFile, SocialStateToId, 'SocialStateToId');
+addContents(OutFile, GlobalState, 'GlobalState');
+// addContents(OutFile, getSocialFrameworkKey, 'getSocialFrameworkKey');
+addContents(OutFile, IdToSocialState, 'IdToSocialState');
+addContents(OutFile, ShepardStates, 'ShepardStates');
+addContents(OutFile, SocialStates, 'SocialStates');
+// addContents(OutFile, SocialStateToId, 'SocialStateToId');
 
 const writeCondition = (dirPath, comment, cndId, int = null, bool = null) => {
   /*

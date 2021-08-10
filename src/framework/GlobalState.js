@@ -1,5 +1,6 @@
 import _ from 'lodash';
-import Characters, {getShortName} from './Characters.js';
+import Characters, {forEachCharacter, getShortName} from './Characters.js';
+
 
 const _getKeyByName = (collection, name) =>
   _.toInteger(_.findKey(collection, (prop) => _.includes(
@@ -7,7 +8,7 @@ const _getKeyByName = (collection, name) =>
     _.toLower(name),
   )));
 
-export const getSocialFrameworkKey = (charNameOrId, socialPropOrId) => {
+export const getSocialFrameworkKey = (charNameOrId, socialPropOrId, prefix) => {
   const charId = _.toInteger(charNameOrId) !== 0
     ? _.toInteger(charNameOrId)
     : _getKeyByName(Characters, charNameOrId);
@@ -16,7 +17,7 @@ export const getSocialFrameworkKey = (charNameOrId, socialPropOrId) => {
     ? _.toInteger(socialPropOrId)
     : _getKeyByName(SocialStates, socialPropOrId);
 
-  return (charId * 100) + socialId;
+  return (_.toInteger(prefix) * 10000) + (charId * 100) + socialId;
 };
 
 export const ShepardStates = {
@@ -44,15 +45,121 @@ export const SocialStates = {
   30: 'Friendship', // protagonist, supporter
   31: 'Loyalty',
   32: 'Rivalry', // adversary, antagonist
-  33: 'RomanticInterest',
-  34: 'SexualInterest',
+  33: 'Romantic Interest',
+  34: 'Sexual Interest',
 };
+export const forEachSocialState = (mapFunc) =>
+  _.forEach(SocialStates, mapFunc);
+
+export const SocialStatesWithComparators = {
+  30: {
+    comparator: '==',
+    socialStateName: 'Friendship',
+  }, // protagonist, supporter
+  31: {
+    comparator: '==',
+    socialStateName: 'Loyalty',
+  },
+  32: {
+    comparator: '==',
+    socialStateName: 'Rivalry',
+  }, // adversary, antagonist
+  33: {
+    comparator: '==',
+    socialStateName: 'Romantic Interest',
+  },
+  34: {
+    comparator: '==',
+    socialStateName: 'Sexual Interest',
+  },
+  60: {
+    comparator: '<',
+    socialStateName: 'Friendship',
+  }, // protagonist, supporter
+  61: {
+    comparator: '<',
+    socialStateName: 'Loyalty',
+  },
+  62: {
+    comparator: '<',
+    socialStateName: 'Rivalry',
+  }, // adversary, antagonist
+  63: {
+    comparator: '<',
+    socialStateName: 'Romantic Interest',
+  },
+  64: {
+    comparator: '<',
+    socialStateName: 'Sexual Interest',
+  },
+  90: {
+    comparator: '>',
+    socialStateName: 'Friendship',
+  }, // protagonist, supporter
+  91: {
+    comparator: '>',
+    socialStateName: 'Loyalty',
+  },
+  92: {
+    comparator: '>',
+    socialStateName: 'Rivalry',
+  }, // adversary, antagonist
+  93: {
+    comparator: '>',
+    socialStateName: 'Romantic Interest',
+  },
+  94: {
+    comparator: '>',
+    socialStateName: 'Sexual Interest',
+  },
+};
+export const forEachSocialStateWithComparator = (mapFunc) =>
+  _.forEach(SocialStatesWithComparators, mapFunc);
 
 // TODO: do we want "romanticHistoryLe1Ashley", "romanticHistoryLe2Ashley", "loyaltyLe1Ashley", etc.,
 //  or just track LE1, etc. in each core var?
 
+const genIdToNameMap = () => {
+  const dict = {};
+  forEachCharacter((charName, charIdStr) => {
+    forEachSocialState((socialStateName, stateIdStr) => {
+      const socialState = `${getShortName(charName)}${socialStateName}`;
+      const key = getSocialFrameworkKey(charIdStr, stateIdStr, 1);
+      dict[key] = socialState;
+    });
+  });
+  return dict;
+};
+
+const genStateDefaultVals = () => {
+  const dict = {};
+  forEachCharacter((charName, charIdStr) => {
+    forEachSocialState((socialStateName, stateIdStr) => {
+      const key = getSocialFrameworkKey(charIdStr, stateIdStr, 2);
+      dict[key] = 0; // 0 by default?
+    });
+  });
+  return dict;
+};
+
+const genSocialStateToId = () => {
+  const dict = {};
+  forEachCharacter((charName, charIdStr) => {
+    forEachSocialState((socialStateName, stateIdStr) => {
+      const socialState = `${getShortName(charName)}${socialStateName}`;
+      dict[socialState] = getSocialFrameworkKey(charIdStr, stateIdStr, 3);
+    });
+  });
+  return dict;
+};
+
+export const IdToSocialState = genIdToNameMap();
+export const StateDefaultVals = genStateDefaultVals();
+export const SocialStateToId = genSocialStateToId();
+
+
 /**
- * This produces a "id-to-names" map (for development) and
+ * This is an "id-to-names" map (for development) and
  * an "id-to-values" map (for the in-game Int vals).
  *
  * __idToNameMap__
@@ -80,22 +187,20 @@ export const SocialStates = {
  * "IntValue" is the value for the state, i.e.:
  *   4231: 6, // GruntLoyalty is "6".
  */
-const _idToNameMap = {};
-const _idValsMap = {};
-const _nameToIdMap = {};
-(() => {
-  _.forEach(Characters, (charName, charIdStr) => {
-    _.forEach(SocialStates, (socialStateName, stateIdStr) => {
-      const socialState = `${getShortName(charName)}${socialStateName}`;
-      const key = _.toInteger(`${charIdStr}${stateIdStr}`);
-      _idToNameMap[key] = socialState;
-      _nameToIdMap[socialState] = key;
-      _idValsMap[key] = 0; // 0 by default?
+const genSocialFrameworkApi = () => {
+  const dict = {};
+  forEachCharacter((charName, charIdStr) => {
+    forEachSocialState((socialStateName, stateIdStr) => {
+      const key = getSocialFrameworkKey(charIdStr, stateIdStr, 1);
+      dict[key] = {
+        charName: charName,
+        charShortName: getShortName(charName),
+        description: `${charName} - ${socialStateName}`,
+        rootId: getSocialFrameworkKey(charIdStr, stateIdStr),
+      };
     });
   });
-})();
-
-export const SocialStateToId = _nameToIdMap;
-export const IdToSocialState = _idToNameMap;
-
-export default _idValsMap;
+  return dict;
+};
+// export default IdToSocialState;
+export default genSocialFrameworkApi();
