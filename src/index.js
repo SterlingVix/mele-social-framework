@@ -68,6 +68,8 @@ const writeConditionals = (conditionalsFile, leGamePrefix = 2) => {
     });
   });
 
+  // TODO: iterate over SocialIdentities here next.
+
   addContents(LE2CndFile, `
 
 // Added ${counter} entries.`);

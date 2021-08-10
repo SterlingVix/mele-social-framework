@@ -5,16 +5,6 @@ import State, {
 } from './GlobalState.js'
 
 
-const conditionsNamed = {
-  getShepardGender: (genderNum) => State.shepardGender === genderNum,
-  romanticInterest: (characterId) => State[`romanticInterest${characterId}`],
-
-  getRomanticInterestFor: (charId) => {
-    const romanceSuffix = _.findKey(SocialStates)
-    // return getInt
-  }
-};
-
 export const genConditionalText = (
   cndId,
   comment, // generate in iteration
