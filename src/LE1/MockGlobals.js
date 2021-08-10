@@ -1,8 +1,8 @@
-import { _bools } from './originals/_bools';
-import { _conditions } from './originals/_conditions';
-import { _floats } from './originals/_floats';
-import { _ints } from './originals/_ints';
-import { _transitions } from './originals/_transitions';
+import { _bools } from './originals/_bools.js';
+import { _conditions } from './originals/_conditions.js';
+import { _floats } from './originals/_floats.js';
+import { _ints } from './originals/_ints.js';
+import { _transitions } from './originals/_transitions.js';
 
 
 export const bioWorld = {

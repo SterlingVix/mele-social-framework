@@ -2,7 +2,7 @@ import _ from 'lodash';
 import {
   characters,
   getCharacterId,
-} from './GetById';
+} from './GetById.js';
 
 const characters = {
   30: `Aria T'Loak`,

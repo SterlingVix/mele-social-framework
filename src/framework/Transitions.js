@@ -1,4 +1,4 @@
-import State from './GlobalState'
+import State from './GlobalState.js'
 
 const transitionsNamed = {
 

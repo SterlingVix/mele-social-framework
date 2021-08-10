@@ -1,11 +1,6 @@
 import _ from 'lodash';
-import Characters,{ getShortName } from './Characters';
-import GlobalState, {
-  ShepardStates,
-  SocialStates,
-  SocialStateToId,
-  IdToSocialState,
-} from "./GlobalState";
+import Characters, {getShortName} from './Characters.js';
+import GlobalState, {getSocialFrameworkKey, IdToSocialState, SocialStates, SocialStateToId,} from "./GlobalState.js";
 
 describe(`Shepard states`, () => {
 
@@ -48,4 +43,21 @@ describe(`IdToSocialState`, () => {
       });
     });
   });
+});
+
+describe(`getSocialFrameworkKey`, () => {
+  [
+    {char: 'Aria', social: 'roman', expected: 3033},
+    {char: 'Loak', social: 'Roman', expected: 3033},
+    {char: 'Grunt', social: 'Loyalty', expected: 4331},
+    {char: 'Samara', social: 'loyal', expected: 6231},
+    {char: 'Morinth', social: 'friend', expected: 5930},
+    {char: 'Jack', social: 'sex', expected: 4534},
+    {char: 'Parasini', social: 'SexualInterest', expected: 4134},
+    {char: 'Chakwas', social: 'Rival', expected: 5132},
+  ].forEach(({char, social, expected}) => {
+    it(`"${char}" "${social}" is "${expected}".`, () => {
+      expect(getSocialFrameworkKey(char, social)).toEqual(expected);
+    });
+  })
 });

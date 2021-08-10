@@ -1,8 +1,6 @@
 import _ from 'lodash';
-import Characters from './framework/Characters';
-import {
-  getCharacter,
-} from './GetById';
+import Characters from './framework/Characters.js';
+import {getCharacter,} from './GetById.js';
 
 describe(`getCharacter`, () => {
   it(`gets the name when given an integer.`, () => {

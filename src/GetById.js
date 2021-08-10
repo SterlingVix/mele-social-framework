@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import Characters, { getShortName } from './framework/Characters';
+import Characters, { getShortName } from './framework/Characters.js';
 
 export const getCharName = (charId) => {
   if (!_.isNumber(charId)) {
