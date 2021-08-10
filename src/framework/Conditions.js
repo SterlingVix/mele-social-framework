@@ -27,23 +27,18 @@ export const genConditionalText = (
     throw new Error(`comparator must be one of ${validComparators}. Received ${comparator}.`);
   }
 
-  /*
-  TODO: Do this next. Should produce a Cnd check for each
-   Social Framework Int, like:
-   // Aria T'Loak: Friendship == Argument
-   return gv.GetInt(3030) == Argument
+  const prettyOutput = `
 
-   Do this for each comparator
-   */
-  return `
-
-// ${comment}  
 public function bool F${cndId}(BioWorldInfo bioWorld, int Argument)
 { 
+  // ${comment}  
   local BioGlobalVariableTable gv;
   gv = bioWorld.GetGlobalVariables();
   return gv.GetInt(${socialStateId}) ${comparator} Argument;
 }`;
+  const terseOutput = `public function bool F${cndId}(BioWorldInfo bioWorld, int Argument) { local BioGlobalVariableTable gv; gv = bioWorld.GetGlobalVariables(); return gv.GetInt(${socialStateId}) ${comparator} Argument; }
+`;
+  return terseOutput;
 };
 
 export const le2ConditionalsHint = `These functions are appended to PlotManager.pcc > BioAutoConditionals
