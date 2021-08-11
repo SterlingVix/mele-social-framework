@@ -7,8 +7,8 @@ const _validateComparator = (comparator) => {
   }
 };
 
-export const genTerseConditionalText = (
-  cndId,
+export const genConditionalText = (
+  conditionId,
   comment, // generate in iteration
   comparator,
   socialRelationshipId = 'Argument', // if provided, get this SocialStateId; otherwise accepts the Cnd argument.
@@ -16,27 +16,38 @@ export const genTerseConditionalText = (
 ) => {
   _validateComparator(comparator);
 
-  return `public function bool F${cndId}(BioWorldInfo bioWorld, int Argument) { local BioGlobalVariableTable gv; gv = bioWorld.GetGlobalVariables(); return gv.GetInt(${socialRelationshipId}) ${comparator} Argument; }
+  return `public function bool F${conditionId}(BioWorldInfo bioWorld, int Argument) { local BioGlobalVariableTable gv; gv = bioWorld.GetGlobalVariables(); return gv.GetInt(${socialRelationshipId}) ${comparator} Argument; }
 `;
 };
 
-export const genApiConditionalText = (
-  cndId,
+export const genTerseApiText = (
+  conditionId,
+  charName,
+  conditionName,
+  rootId,
+  comparator,
+  leGamePrefix,
+) =>
+  `Cnd ${conditionId} ==> LE${leGamePrefix} | ${charName} | ${conditionName}(${rootId}) ${comparator} [[Argument]]
+`;
+
+export const genConditionalApiText = (
+  conditionId,
   comment, // generate in iteration
   comparator,
   socialRelationshipId = 'Argument', // if provided, get this SocialStateId; otherwise accepts the Cnd argument.
-  intArgument = 'Argument', // if provided, compare against this; otherwise accepts the Cnd argument.
+  arg = 'Argument', // if provided, compare against this; otherwise accepts the Cnd argument.
 ) => {
   _validateComparator(comparator);
 
   return `
 
-// Cnd ${cndId} ==> ${comment}
-public function bool F${cndId}(BioWorldInfo bioWorld, int Argument)
+// Cnd ${conditionId} ==> ${comment}
+public function bool F${conditionId}(BioWorldInfo bioWorld, int Argument)
 {
   local BioGlobalVariableTable gv;
   gv = bioWorld.GetGlobalVariables();
-  return gv.GetInt(${socialRelationshipId}) ${comparator} Argument;
+  return gv.GetInt(${socialRelationshipId}) ${comparator} ${arg};
 }`;
 };
 

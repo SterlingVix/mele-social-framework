@@ -25,71 +25,44 @@ export const SocialRelationships = {
   33: 'Romantic Interest',
   34: 'Sexual Interest',
 };
+const _socRelats = [
+  'Friendship', // protagonist, supporter
+  'Loyalty',
+  'Rivalry', // adversary, antagonist
+  'Romantic Interest',
+  'Sexual Interest',
+];
 export const forEachSocialRelationship = (mapFunc) =>
   _.forEach(SocialRelationships, mapFunc);
 
-export const SocialRelationshipsWithComparators = {
-  30: {
-    comparator: '==',
-    socialRelationshipName: 'Friendship',
-  }, // protagonist, supporter
-  31: {
-    comparator: '==',
-    socialRelationshipName: 'Loyalty',
-  },
-  32: {
-    comparator: '==',
-    socialRelationshipName: 'Rivalry',
-  }, // adversary, antagonist
-  33: {
-    comparator: '==',
-    socialRelationshipName: 'Romantic Interest',
-  },
-  34: {
-    comparator: '==',
-    socialRelationshipName: 'Sexual Interest',
-  },
-  60: {
-    comparator: '<',
-    socialRelationshipName: 'Friendship',
-  }, // protagonist, supporter
-  61: {
-    comparator: '<',
-    socialRelationshipName: 'Loyalty',
-  },
-  62: {
-    comparator: '<',
-    socialRelationshipName: 'Rivalry',
-  }, // adversary, antagonist
-  63: {
-    comparator: '<',
-    socialRelationshipName: 'Romantic Interest',
-  },
-  64: {
-    comparator: '<',
-    socialRelationshipName: 'Sexual Interest',
-  },
-  90: {
-    comparator: '>',
-    socialRelationshipName: 'Friendship',
-  }, // protagonist, supporter
-  91: {
-    comparator: '>',
-    socialRelationshipName: 'Loyalty',
-  },
-  92: {
-    comparator: '>',
-    socialRelationshipName: 'Rivalry',
-  }, // adversary, antagonist
-  93: {
-    comparator: '>',
-    socialRelationshipName: 'Romantic Interest',
-  },
-  94: {
-    comparator: '>',
-    socialRelationshipName: 'Sexual Interest',
-  },
+const Comparators = [
+  '<',
+  '==',
+  '>',
+];
+
+const genConditionalsWithComparators = (conditionsMap, startingIdx) => {
+  const initialMap = [];
+
+  _.forEach(conditionsMap, (conditionName) => {
+    _.forEach(Comparators, (comparator) => {
+      initialMap.push({
+        comparator,
+        conditionName,
+      });
+    });
+  });
+
+  const res = {};
+  _.forEach(initialMap, (cndObj, idx) => res[_.toInteger(startingIdx + idx)] = cndObj);
+
+  return res;
 };
+
+
+export const SocialRelationshipsWithComparators =
+  genConditionalsWithComparators(_socRelats, 30);
+
 export const forEachSocialRelationshipWithComparator = (mapFunc) =>
   _.forEach(SocialRelationshipsWithComparators, mapFunc);
 

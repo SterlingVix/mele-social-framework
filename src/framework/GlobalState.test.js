@@ -8,9 +8,9 @@ describe(`Shepard states`, () => {
 describe(`Social states (IdsValuesMap)`, () => {
   _.forEach(Characters, (charName, charId) => {
     const shortName = getShortName(charName);
-    _.forEach(SocialRelationships, (socialRelationshipName, socialRelationshipId) => {
+    _.forEach(SocialRelationships, (conditionName, socialRelationshipId) => {
       const stateId = _.toInteger(`${charId}${socialRelationshipId}`);
-      const stateName = `${shortName}${socialRelationshipName}`;
+      const stateName = `${shortName}${conditionName}`;
       it(`GlobalState key "${stateId}" is default value.`, () => {
         expect(GlobalState[stateId]).toEqual(0);
       });
@@ -21,9 +21,9 @@ describe(`Social states (IdsValuesMap)`, () => {
 describe(`SocialStateToId`, () => {
   _.forEach(Characters, (charName, charId) => {
     const shortName = getShortName(charName);
-    _.forEach(SocialRelationships, (socialRelationshipName, socialRelationshipId) => {
+    _.forEach(SocialRelationships, (conditionName, socialRelationshipId) => {
       const stateId = _.toInteger(`${charId}${socialRelationshipId}`);
-      const stateName = `${shortName}${socialRelationshipName}`;
+      const stateName = `${shortName}${conditionName}`;
       it(`SocialStateToId key "${stateId}" is "${stateName}".`, () => {
         expect(SocialStateToId[stateName]).toEqual(stateId);
       });
@@ -34,9 +34,9 @@ describe(`SocialStateToId`, () => {
 describe(`IdToSocialState`, () => {
   _.forEach(Characters, (charName, charId) => {
     const shortName = getShortName(charName);
-    _.forEach(SocialRelationships, (socialRelationshipName, socialRelationshipId) => {
+    _.forEach(SocialRelationships, (conditionName, socialRelationshipId) => {
       const stateId = _.toInteger(`${charId}${socialRelationshipId}`);
-      const stateName = `${shortName}${socialRelationshipName}`;
+      const stateName = `${shortName}${conditionName}`;
       it(`IdToSocialState key "${stateId}" is "${stateName}".`, () => {
         expect(IdToSocialState[stateId]).toEqual(stateName);
       });

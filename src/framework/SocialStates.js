@@ -6,11 +6,11 @@ import _ from 'lodash';
 import Characters from './Characters.js';
 
 export const Genders = {
-  '01': 'Female',
-  '02': 'Genderqueer',
-  '03': 'Male',
-  '04': 'Non-binary',
-  '05': 'Transgendered',
+  1: 'Female',
+  2: 'Genderqueer',
+  3: 'Male',
+  4: 'Non-binary',
+  5: 'Transgendered',
   // '06': reserved. We could have more options here, but we're low on room.
 };
 export const getGenderId = (genderDescription) =>
@@ -79,85 +79,6 @@ export const SocialRelationships = {
 export const getSocRelatId = (socRelatDescription) =>
   _.findKey(SocialRelationships, (socRelat) =>
     _.includes(_.lowerCase(socRelat), _.lowerCase(socRelatDescription)));
-
-export const SocialRelationshipsWithComparators = {
-  30: {
-    comparator: '==',
-    socialRelationshipName: 'Friendship',
-  }, // protagonist, supporter
-  31: {
-    comparator: '==',
-    socialRelationshipName: 'Loyalty',
-  },
-  32: {
-    comparator: '==',
-    socialRelationshipName: 'Rivalry',
-  }, // adversary, antagonist
-  33: {
-    comparator: '==',
-    socialRelationshipName: 'Romantic Interest',
-  },
-  34: {
-    comparator: '==',
-    socialRelationshipName: 'Sexual Interest',
-  },
-  60: {
-    comparator: '<',
-    socialRelationshipName: 'Friendship',
-  }, // protagonist, supporter
-  61: {
-    comparator: '<',
-    socialRelationshipName: 'Loyalty',
-  },
-  62: {
-    comparator: '<',
-    socialRelationshipName: 'Rivalry',
-  }, // adversary, antagonist
-  63: {
-    comparator: '<',
-    socialRelationshipName: 'Romantic Interest',
-  },
-  64: {
-    comparator: '<',
-    socialRelationshipName: 'Sexual Interest',
-  },
-  90: {
-    comparator: '>',
-    socialRelationshipName: 'Friendship',
-  }, // protagonist, supporter
-  91: {
-    comparator: '>',
-    socialRelationshipName: 'Loyalty',
-  },
-  92: {
-    comparator: '>',
-    socialRelationshipName: 'Rivalry',
-  }, // adversary, antagonist
-  93: {
-    comparator: '>',
-    socialRelationshipName: 'Romantic Interest',
-  },
-  94: {
-    comparator: '>',
-    socialRelationshipName: 'Sexual Interest',
-  },
-};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-export const forEachSocialRelationshipWithComparator = (mapFunc) =>
-  _.forEach(SocialRelationshipsWithComparators, mapFunc);
 
 export const forEachSocialRelationship = (mapFunc) =>
   _.forEach(SocialRelationships, mapFunc);

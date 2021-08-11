@@ -8,8 +8,8 @@ import {forEachSocialRelationship, getSocialFrameworkKey} from "./SocialRelation
 const genIdToNameMap = () => {
   const dict = {};
   forEachCharacter((charName, charIdStr) => {
-    forEachSocialRelationship((socialRelationshipName, stateIdStr) => {
-      const socialRelationship = `${getShortName(charName)}${socialRelationshipName}`;
+    forEachSocialRelationship((conditionName, stateIdStr) => {
+      const socialRelationship = `${getShortName(charName)}${conditionName}`;
       const key = getSocialFrameworkKey(charIdStr, stateIdStr, 1);
       dict[key] = socialRelationship;
     });
@@ -20,7 +20,7 @@ const genIdToNameMap = () => {
 const genStateDefaultVals = () => {
   const dict = {};
   forEachCharacter((charName, charIdStr) => {
-    forEachSocialRelationship((socialRelationshipName, stateIdStr) => {
+    forEachSocialRelationship((conditionName, stateIdStr) => {
       const key = getSocialFrameworkKey(charIdStr, stateIdStr, 2);
       dict[key] = 0; // 0 by default?
     });
@@ -31,8 +31,8 @@ const genStateDefaultVals = () => {
 const genSocialStateToId = () => {
   const dict = {};
   forEachCharacter((charName, charIdStr) => {
-    forEachSocialRelationship((socialRelationshipName, stateIdStr) => {
-      const socialRelationship = `${getShortName(charName)}${socialRelationshipName}`;
+    forEachSocialRelationship((conditionName, stateIdStr) => {
+      const socialRelationship = `${getShortName(charName)}${conditionName}`;
       dict[socialRelationship] = getSocialFrameworkKey(charIdStr, stateIdStr, 3);
     });
   });
@@ -76,12 +76,12 @@ export const SocialStateToId = genSocialStateToId();
 const genSocialFrameworkApi = () => {
   const dict = {};
   forEachCharacter((charName, charIdStr) => {
-    forEachSocialRelationship((socialRelationshipName, stateIdStr) => {
+    forEachSocialRelationship((conditionName, stateIdStr) => {
       const key = getSocialFrameworkKey(charIdStr, stateIdStr, 1);
       dict[key] = {
         charName: charName,
         charShortName: getShortName(charName),
-        description: `${charName} - ${socialRelationshipName}`,
+        description: `${charName} - ${conditionName}`,
         rootId: getSocialFrameworkKey(charIdStr, stateIdStr),
       };
     });

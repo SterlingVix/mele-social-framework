@@ -1,5 +1,9 @@
 import _ from "lodash";
 
+export const ShepardChar = {
+  11: `Shepard`,
+};
+
 const Characters = {
   30: `Aria T'Loak`,
   31: `Armando-Owen Bailey`,

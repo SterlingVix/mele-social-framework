@@ -99,15 +99,20 @@ CopyCnd(iter) {
   Sleep 20
 
   ; NOTE: update the number of iterations here. AHK will fail if the stack call is 400-ish iterations deep.
-  if (iter < 100)
-    CopyCnd(++iter)
+  if (iter > 1)
+    CopyCnd(--iter)
 }
 
 ;   ------------------------------------
 ;         Define script(s) here:
 ;   ------------------------------------
 ~LControl & P::
-  CopyCnd(1)
+  CopyCnd(100)
+  CopyCnd(100)
+  CopyCnd(100)
+  CopyCnd(100)
+  CopyCnd(100)
+  CopyCnd(86)
 return
 
 

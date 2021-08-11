@@ -1,9 +1,10 @@
 import _ from 'lodash';
 import fs from 'fs';
-import {BuildDir, LE1Dir, LE2CndApiFile, LE2CndFile, LE2Dir, LE3Dir, OutFile,} from './Paths.js';
-import {forEachCharacter} from './framework/Characters.js';
-import {genApiConditionalText, genTerseConditionalText, le2ConditionalsHint} from './framework/Conditions.js';
+import {BuildDir, LE1Dir, LE2CndApiFile, LE2CndFile, LE2Dir, LE2TerseApiFile, LE3Dir, OutFile,} from './Paths.js';
+import {forEachCharacter, ShepardChar} from './framework/Characters.js';
+import {genConditionalApiText, genTerseApiText, genConditionalText, le2ConditionalsHint} from './framework/Conditions.js';
 import {getSocialFrameworkKey, SocialRelationshipsWithComparators} from './framework/SocialRelationships.js';
+import {ShepardConds} from "./framework/ShepardStates.js";
 
 
 const makeDir = (dirPath) => {
@@ -32,8 +33,6 @@ const addContents = (dirPath, toWrite, comment) => {
 `);
   }
   fs.appendFileSync(dirPath, mainContent);
-//   fs.appendFileSync(dirPath, `
-// `);
 };
 
 let counter = 0;
@@ -45,47 +44,65 @@ makeDir(LE3Dir);
 
 makeFile(OutFile);
 
-const initLe2ConditionalsFile = () => {
-  makeFile(LE2CndFile);
-};
-initLe2ConditionalsFile();
-
-
-const initLe2ConditionalsApiFile = () => {
-  makeFile(LE2CndApiFile);
-  addContents(LE2CndApiFile, '', le2ConditionalsHint);
-};
-initLe2ConditionalsApiFile();
-
-
 const appendCounter = (file) => addContents(file, `
 
 // Added ${counter} entries.`);
-const writeConditionals = (conditionalsFile, apiFile, leGamePrefix = 2) => {
+
+const writeConditionals = (conditionalsFile, apiFile, terseFile, leGamePrefix = 2) => {
   counter = 0;
+  // initialize files.
+  makeFile(conditionalsFile);
+  makeFile(apiFile);
+  addContents(apiFile, '', le2ConditionalsHint);
+  makeFile(terseFile);
 
+
+  // Write contents to files.
   forEachCharacter((charName, charIdStr) => {
-    _.forEach(SocialRelationshipsWithComparators, ({comparator, socialRelationshipName}, stateIdStr) => {
-      // const charShortName = getShortName(charName);
-
+    _.forEach(SocialRelationshipsWithComparators, ({comparator, conditionName}, stateIdStr) => {
       counter++;
+
+      const conditionId = getSocialFrameworkKey(charIdStr, stateIdStr, leGamePrefix);
+      const comment = `LE${leGamePrefix} | ${charName} | ${conditionName} ${comparator} [[Argument]]`;
+      const rootId = getSocialFrameworkKey(charIdStr, stateIdStr);
+
       const conditionalsParams = [
-        getSocialFrameworkKey(charIdStr, stateIdStr, leGamePrefix), // conditionId,
-        `LE${leGamePrefix} | ${charName} | ${socialRelationshipName} ${comparator} [[Argument]]`, // comment
+        conditionId,
+        comment,
         comparator,
-        getSocialFrameworkKey(charIdStr, stateIdStr), // rootId,
+        rootId,
       ];
-      addContents(conditionalsFile, genTerseConditionalText(...conditionalsParams));
-      addContents(apiFile, genApiConditionalText(...conditionalsParams));
+      addContents(conditionalsFile, genConditionalText(...conditionalsParams));
+      addContents(apiFile, genConditionalApiText(...conditionalsParams));
+      addContents(
+        terseFile,
+        genTerseApiText(
+          conditionId,
+          charName,
+          conditionName,
+          rootId,
+          comparator,
+          leGamePrefix,
+        ),
+      );
     });
   });
+
+  // Shepard Conditions
+  counter++;
+  addContents(conditionalsFile, ShepardConds.genderCnds.cnd);
+  addContents(apiFile, ShepardConds.genderCnds.api);
+  addContents(terseFile, ShepardConds.genderCnds.terse);
+
+
 
   // TODO: iterate over SocialIdentities here next.
 
   appendCounter(conditionalsFile);
-  appendCounter(apiFile);
+  // appendCounter(apiFile);
+  appendCounter(LE2TerseApiFile);
 };
-writeConditionals(LE2CndFile, LE2CndApiFile, 2);
+writeConditionals(LE2CndFile, LE2CndApiFile, LE2TerseApiFile, 2);
 
 // addContents(OutFile, GlobalState, 'GlobalState');
 // addContents(OutFile, getSocialFrameworkKey, 'getSocialFrameworkKey');
