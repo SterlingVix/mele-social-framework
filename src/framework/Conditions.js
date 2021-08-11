@@ -1,34 +1,43 @@
 import _ from 'lodash';
-import State, {
-  getSocialFrameworkKey,
-  SocialStates,
-} from './GlobalState.js'
 
-
-export const genConditionalText = (
-  cndId,
-  comment, // generate in iteration
-  comparator,
-  socialStateId = 'Argument', // if provided, get this SocialStateId; otherwise accepts the Cnd argument.
-  intArgument = 'Argument', // if provided, compare against this; otherwise accepts the Cnd argument.
-) => {
+const _validateComparator = (comparator) => {
   const validComparators = ['!=', '<', '<=', '==', '>', '>='];
   if (!_.includes(validComparators, comparator)) {
     throw new Error(`comparator must be one of ${validComparators}. Received ${comparator}.`);
   }
+};
 
-  const prettyOutput = `
+export const genTerseConditionalText = (
+  cndId,
+  comment, // generate in iteration
+  comparator,
+  socialRelationshipId = 'Argument', // if provided, get this SocialStateId; otherwise accepts the Cnd argument.
+  intArgument = 'Argument', // if provided, compare against this; otherwise accepts the Cnd argument.
+) => {
+  _validateComparator(comparator);
 
+  return `public function bool F${cndId}(BioWorldInfo bioWorld, int Argument) { local BioGlobalVariableTable gv; gv = bioWorld.GetGlobalVariables(); return gv.GetInt(${socialRelationshipId}) ${comparator} Argument; }
+`;
+};
+
+export const genApiConditionalText = (
+  cndId,
+  comment, // generate in iteration
+  comparator,
+  socialRelationshipId = 'Argument', // if provided, get this SocialStateId; otherwise accepts the Cnd argument.
+  intArgument = 'Argument', // if provided, compare against this; otherwise accepts the Cnd argument.
+) => {
+  _validateComparator(comparator);
+
+  return `
+
+// Cnd ${cndId} ==> ${comment}
 public function bool F${cndId}(BioWorldInfo bioWorld, int Argument)
-{ 
-  // ${comment}  
+{
   local BioGlobalVariableTable gv;
   gv = bioWorld.GetGlobalVariables();
-  return gv.GetInt(${socialStateId}) ${comparator} Argument;
+  return gv.GetInt(${socialRelationshipId}) ${comparator} Argument;
 }`;
-  const terseOutput = `public function bool F${cndId}(BioWorldInfo bioWorld, int Argument) { local BioGlobalVariableTable gv; gv = bioWorld.GetGlobalVariables(); return gv.GetInt(${socialStateId}) ${comparator} Argument; }
-`;
-  return terseOutput;
 };
 
 export const le2ConditionalsHint = `These functions are appended to PlotManager.pcc > BioAutoConditionals
@@ -36,12 +45,8 @@ export const le2ConditionalsHint = `These functions are appended to PlotManager.
 //   public function bool F1194(BioWorldInfo bioWorld, int Argument)
 //   {
 //     local BioGlobalVariableTable gv;
-//   
+//
 //     gv = bioWorld.GetGlobalVariables();
 //     return gv.GetBool(4266) == TRUE;
 //   }
-
 `;
-
-export default {
-};

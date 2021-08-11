@@ -1,6 +1,5 @@
 import _ from 'lodash';
 import Characters, {getShortName} from './Characters.js';
-import GlobalState, {getSocialFrameworkKey, IdToSocialState, SocialStates, SocialStateToId,} from "./GlobalState.js";
 
 describe(`Shepard states`, () => {
 
@@ -9,9 +8,9 @@ describe(`Shepard states`, () => {
 describe(`Social states (IdsValuesMap)`, () => {
   _.forEach(Characters, (charName, charId) => {
     const shortName = getShortName(charName);
-    _.forEach(SocialStates, (socialStateName, socialStateId) => {
-      const stateId = _.toInteger(`${charId}${socialStateId}`);
-      const stateName = `${shortName}${socialStateName}`;
+    _.forEach(SocialRelationships, (socialRelationshipName, socialRelationshipId) => {
+      const stateId = _.toInteger(`${charId}${socialRelationshipId}`);
+      const stateName = `${shortName}${socialRelationshipName}`;
       it(`GlobalState key "${stateId}" is default value.`, () => {
         expect(GlobalState[stateId]).toEqual(0);
       });
@@ -22,9 +21,9 @@ describe(`Social states (IdsValuesMap)`, () => {
 describe(`SocialStateToId`, () => {
   _.forEach(Characters, (charName, charId) => {
     const shortName = getShortName(charName);
-    _.forEach(SocialStates, (socialStateName, socialStateId) => {
-      const stateId = _.toInteger(`${charId}${socialStateId}`);
-      const stateName = `${shortName}${socialStateName}`;
+    _.forEach(SocialRelationships, (socialRelationshipName, socialRelationshipId) => {
+      const stateId = _.toInteger(`${charId}${socialRelationshipId}`);
+      const stateName = `${shortName}${socialRelationshipName}`;
       it(`SocialStateToId key "${stateId}" is "${stateName}".`, () => {
         expect(SocialStateToId[stateName]).toEqual(stateId);
       });
@@ -35,9 +34,9 @@ describe(`SocialStateToId`, () => {
 describe(`IdToSocialState`, () => {
   _.forEach(Characters, (charName, charId) => {
     const shortName = getShortName(charName);
-    _.forEach(SocialStates, (socialStateName, socialStateId) => {
-      const stateId = _.toInteger(`${charId}${socialStateId}`);
-      const stateName = `${shortName}${socialStateName}`;
+    _.forEach(SocialRelationships, (socialRelationshipName, socialRelationshipId) => {
+      const stateId = _.toInteger(`${charId}${socialRelationshipId}`);
+      const stateName = `${shortName}${socialRelationshipName}`;
       it(`IdToSocialState key "${stateId}" is "${stateName}".`, () => {
         expect(IdToSocialState[stateId]).toEqual(stateName);
       });
