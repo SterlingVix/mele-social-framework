@@ -1,6 +1,6 @@
 // TODO this file might benefit from different/better organization.
-
-import {getGenderId, getHereditaryId} from "./SocialStates.js";
+import _ from 'lodash';
+import {Genders, getGenderId, getHereditaryId} from "./SocialStates.js";
 import {genConditionalApiText, genTerseApiText, genConditionalText} from "./Conditions.js";
 import {ShepardChar} from "./Characters.js";
 import {getSocialFrameworkKey} from "./SocialRelationships.js";

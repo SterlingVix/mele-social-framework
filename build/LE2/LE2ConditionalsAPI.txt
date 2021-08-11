@@ -4689,6 +4689,7 @@ public function bool F26844(BioWorldInfo bioWorld, int Argument)
   gv = bioWorld.GetGlobalVariables();
   return gv.GetInt(6844) > Argument;
 }
+    
 // Cnd 29911 ==> LE2 | Shepard | Gender Identity(9911) == [[Argument]]
 public function bool F29911(BioWorldInfo bioWorld, int Argument)
 {

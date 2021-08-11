@@ -6,47 +6,47 @@ import _ from 'lodash';
 import Characters from './Characters.js';
 
 export const Genders = {
-  1: 'Female',
-  2: 'Genderqueer',
-  3: 'Male',
-  4: 'Non-binary',
-  5: 'Transgendered',
-  // '06': reserved. We could have more options here, but we're low on room.
+  60: 'Female',
+  61: 'Genderqueer',
+  62: 'Male',
+  63: 'Non-binary',
+  64: 'Transgendered',
+  // 65: reserved. Add more genders here (and make room below).
 };
 export const getGenderId = (genderDescription) =>
   _.findKey(Genders, (gender) =>
     _.includes(_.lowerCase(gender), _.lowerCase(genderDescription)));
 
 export const Hereditaries = {
-  '07': 'Asari',
-  '08': 'Batarian',
-  '09': 'Drell',
-  '10': 'Elcor',
-  '11': 'Geth',
-  '12': 'Hanar',
-  '13': 'Human',
-  '14': 'Krogan',
-  '15': 'Quarian',
-  '16': 'Salarian',
-  '17': 'Turian',
-  '18': 'Volus',
-  '19': 'Vorcha',
+  70: 'Asari',
+  71: 'Batarian',
+  72: 'Drell',
+  73: 'Elcor',
+  74: 'Geth',
+  75: 'Hanar',
+  76: 'Human',
+  77: 'Krogan',
+  78: 'Quarian',
+  79: 'Salarian',
+  80: 'Turian',
+  81: 'Volus',
+  82: 'Vorcha',
 };
 export const getHereditaryId = (hereditaryDescription) =>
   _.findKey(Hereditaries, (hereditary) =>
     _.includes(_.lowerCase(hereditary), _.lowerCase(hereditaryDescription)));
 
 export const Professions = {
-  '20': 'Biotic',
-  '21': 'Diplomat',
-  '22': 'Educator',
-  '23': 'Engineer',
-  '24': 'Laborer',
-  '25': 'Mercenary',
-  '26': 'Professional',
-  '27': 'Security',
-  '28': 'Soldier',
-  '29': 'Warlord',
+  90: 'Biotic',
+  91: 'Diplomat',
+  92: 'Educator',
+  93: 'Engineer',
+  94: 'Laborer',
+  95: 'Mercenary',
+  96: 'Professional',
+  97: 'Security',
+  98: 'Soldier',
+  99: 'Warlord',
 };
 export const getProfessionId = (professionDescription) =>
   _.findKey(Professions, (profession) =>
