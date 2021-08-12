@@ -4,50 +4,16 @@
 
 import _ from 'lodash';
 import Characters from './Characters.js';
+import {Genders, Hereditaries, Professions} from './SocialIdentities.js';
 
-export const Genders = {
-  60: 'Female',
-  61: 'Genderqueer',
-  62: 'Male',
-  63: 'Non-binary',
-  64: 'Transgendered',
-  // 65: reserved. Add more genders here (and make room below).
-};
 export const getGenderId = (genderDescription) =>
   _.findKey(Genders, (gender) =>
     _.includes(_.lowerCase(gender), _.lowerCase(genderDescription)));
 
-export const Hereditaries = {
-  70: 'Asari',
-  71: 'Batarian',
-  72: 'Drell',
-  73: 'Elcor',
-  74: 'Geth',
-  75: 'Hanar',
-  76: 'Human',
-  77: 'Krogan',
-  78: 'Quarian',
-  79: 'Salarian',
-  80: 'Turian',
-  81: 'Volus',
-  82: 'Vorcha',
-};
 export const getHereditaryId = (hereditaryDescription) =>
   _.findKey(Hereditaries, (hereditary) =>
     _.includes(_.lowerCase(hereditary), _.lowerCase(hereditaryDescription)));
 
-export const Professions = {
-  90: 'Biotic',
-  91: 'Diplomat',
-  92: 'Educator',
-  93: 'Engineer',
-  94: 'Laborer',
-  95: 'Mercenary',
-  96: 'Professional',
-  97: 'Security',
-  98: 'Soldier',
-  99: 'Warlord',
-};
 export const getProfessionId = (professionDescription) =>
   _.findKey(Professions, (profession) =>
     _.includes(_.lowerCase(profession), _.lowerCase(professionDescription)));
@@ -69,19 +35,19 @@ export const getProfessionId = (professionDescription) =>
  *   3332: 2 (Shepard and Admiral Anderson have a Rivalry value of "2")
  *   3033: -1 (Shepard declined RomanticInterest with Aria T'Loak)
  */
-export const SocialRelationships = {
-  30: 'Friendship', // protagonist, supporter
-  31: 'Loyalty',
-  32: 'Rivalry', // adversary, antagonist
-  33: 'Romantic Attraction',
-  34: 'Sexual Attraction',
-};
-export const getSocRelatId = (socRelatDescription) =>
-  _.findKey(SocialRelationships, (socRelat) =>
-    _.includes(_.lowerCase(socRelat), _.lowerCase(socRelatDescription)));
-
-export const forEachSocialRelationship = (mapFunc) =>
-  _.forEach(SocialRelationships, mapFunc);
+// export const SocialRelationships = {
+//   30: 'Friendship', // protagonist, supporter
+//   31: 'Loyalty',
+//   32: 'Rivalry', // adversary, antagonist
+//   33: 'Romantic Attraction',
+//   34: 'Sexual Attraction',
+// };
+// export const getSocRelatId = (socRelatDescription) =>
+//   _.findKey(SocialRelationships, (socRelat) =>
+//     _.includes(_.lowerCase(socRelat), _.lowerCase(socRelatDescription)));
+//
+// export const forEachSocialRelationship = (mapFunc) =>
+//   _.forEach(SocialRelationships, mapFunc);
 
 const _getKeyByName = (collection, name) =>
   _.toInteger(_.findKey(collection, (prop) => _.includes(
@@ -89,7 +55,7 @@ const _getKeyByName = (collection, name) =>
     _.toLower(name),
   )));
 
-export const getSocialFrameworkKey = (charNameOrId, socialPropOrId, prefix) => {
+export const getSocFrmwrkCndKey = (charNameOrId, socialPropOrId, prefix) => {
   const charId = _.toInteger(charNameOrId) !== 0
     ? _.toInteger(charNameOrId)
     : _getKeyByName(Characters, charNameOrId);
@@ -101,3 +67,8 @@ export const getSocialFrameworkKey = (charNameOrId, socialPropOrId, prefix) => {
   return (_.toInteger(prefix) * 10000) + (charId * 100) + socialId;
 };
 
+export default {
+  Genders,
+  Hereditaries,
+  Professions,
+};

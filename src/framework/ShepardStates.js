@@ -1,15 +1,12 @@
 // TODO this file might benefit from different/better organization.
 import _ from 'lodash';
-import {Genders, getGenderId, getHereditaryId} from "./SocialStates.js";
+import {getGenderId, getHereditaryId} from "./SocialStates.js";
 import {genConditionalApiText, genTerseApiText, genConditionalText} from "./Conditions.js";
-import {ShepardChar} from "./Characters.js";
-import {getSocialFrameworkKey} from "./SocialRelationships.js";
-
-export const ShepardStates = {
-  gender: 0, // one of Genders
-  hereditary: 0, // 'human'
-  profession: 0, // 'soldier'
-};
+import {getSocFrmwrkCndKey} from "./SocialRelationships.js";
+import {
+  Genders,
+  ShepardChar,
+} from './SocialIdentities.js';
 
 const defaultMaleShep = {
   gender: getGenderId('male'),
@@ -29,8 +26,8 @@ const conditionName = 'Gender Identity';
 const leGamePrefix = 2; // TODO
 const socialRelationshipId = 11;
 
-const conditionId = getSocialFrameworkKey(shepardCharId, socialRelationshipId, leGamePrefix);
-const rootId = getSocialFrameworkKey(shepardCharId, socialRelationshipId);
+const conditionId = getSocFrmwrkCndKey(shepardCharId, socialRelationshipId, leGamePrefix);
+const rootId = getSocFrmwrkCndKey(shepardCharId, socialRelationshipId);
 const comment = `Cnd ${conditionId} ==> LE2 | ${charName} | ${conditionName}(${rootId}) == [[Argument]]`;
 
 // Cnd 29911 ==> LE2 | Shepard | Gender Identity == [[Argument]]

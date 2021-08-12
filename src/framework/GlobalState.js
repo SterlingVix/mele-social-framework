@@ -1,16 +1,14 @@
 import _ from 'lodash';
 import {forEachCharacter, getShortName} from './Characters.js';
-import {forEachSocialRelationship, getSocialFrameworkKey} from "./SocialRelationships";
+import {forEachSocialRelationship, getSocFrmwrkCndKey} from "./SocialRelationships.js";
 
-// TODO: do we want "romanticHistoryLe1Ashley", "romanticHistoryLe2Ashley", "loyaltyLe1Ashley", etc.,
-//  or just track LE1, etc. in each core var?
 
 const genIdToNameMap = () => {
   const dict = {};
   forEachCharacter((charName, charIdStr) => {
     forEachSocialRelationship((conditionName, stateIdStr) => {
       const socialRelationship = `${getShortName(charName)}${conditionName}`;
-      const key = getSocialFrameworkKey(charIdStr, stateIdStr, 1);
+      const key = getSocFrmwrkCndKey(charIdStr, stateIdStr, 1);
       dict[key] = socialRelationship;
     });
   });
@@ -21,7 +19,7 @@ const genStateDefaultVals = () => {
   const dict = {};
   forEachCharacter((charName, charIdStr) => {
     forEachSocialRelationship((conditionName, stateIdStr) => {
-      const key = getSocialFrameworkKey(charIdStr, stateIdStr, 2);
+      const key = getSocFrmwrkCndKey(charIdStr, stateIdStr, 2);
       dict[key] = 0; // 0 by default?
     });
   });
@@ -33,7 +31,7 @@ const genSocialStateToId = () => {
   forEachCharacter((charName, charIdStr) => {
     forEachSocialRelationship((conditionName, stateIdStr) => {
       const socialRelationship = `${getShortName(charName)}${conditionName}`;
-      dict[socialRelationship] = getSocialFrameworkKey(charIdStr, stateIdStr, 3);
+      dict[socialRelationship] = getSocFrmwrkCndKey(charIdStr, stateIdStr, 3);
     });
   });
   return dict;
@@ -77,12 +75,12 @@ const genSocialFrameworkApi = () => {
   const dict = {};
   forEachCharacter((charName, charIdStr) => {
     forEachSocialRelationship((conditionName, stateIdStr) => {
-      const key = getSocialFrameworkKey(charIdStr, stateIdStr, 1);
+      const key = getSocFrmwrkCndKey(charIdStr, stateIdStr, 1);
       dict[key] = {
         charName: charName,
         charShortName: getShortName(charName),
         description: `${charName} - ${conditionName}`,
-        rootId: getSocialFrameworkKey(charIdStr, stateIdStr),
+        rootId: getSocFrmwrkCndKey(charIdStr, stateIdStr),
       };
     });
   });

@@ -1,10 +1,11 @@
 import _ from 'lodash';
 import fs from 'fs';
-import {BuildDir, LE1Dir, LE2CndApiFile, LE2CndFile, LE2Dir, LE2TerseApiFile, LE3Dir, OutFile,} from './Paths.js';
-import {forEachCharacter, ShepardChar} from './framework/Characters.js';
-import {genConditionalApiText, genTerseApiText, genConditionalText, le2ConditionalsHint} from './framework/Conditions.js';
-import {getSocialFrameworkKey, SocialRelationshipsWithComparators} from './framework/SocialRelationships.js';
+import {BuildDir, LE1Dir, LE2CndApiFile, LE2CndFile, LE2Dir, LE2TerseCndApiFile, LE2TerseTransApiFile, LE3Dir, OutFile,} from './Paths.js';
+import {forEachCharacter} from './framework/Characters.js';
+import {genConditionalApiText, genConditionalText, genTerseApiText, le2ConditionalsHint} from './framework/Conditions.js';
+import {getSocFrmwrkCndKey, getSocFrmwrkRootId, SocialRelationshipsWithComparators} from './framework/SocialRelationships.js';
 import {ShepardConds} from "./framework/ShepardStates.js";
+import Transitions from './framework/Transitions.js';
 
 
 const makeDir = (dirPath) => {
@@ -62,9 +63,9 @@ const writeConditionals = (conditionalsFile, apiFile, terseFile, leGamePrefix = 
     _.forEach(SocialRelationshipsWithComparators, ({comparator, conditionName}, stateIdStr) => {
       counter++;
 
-      const conditionId = getSocialFrameworkKey(charIdStr, stateIdStr, leGamePrefix);
+      const conditionId = getSocFrmwrkCndKey(charIdStr, stateIdStr, leGamePrefix);
       const comment = `LE${leGamePrefix} | ${charName} | ${conditionName} ${comparator} [[Argument]]`;
-      const rootId = getSocialFrameworkKey(charIdStr, stateIdStr);
+      const rootId = getSocFrmwrkRootId(charIdStr, conditionName);
 
       const conditionalsParams = [
         conditionId,
@@ -95,17 +96,19 @@ const writeConditionals = (conditionalsFile, apiFile, terseFile, leGamePrefix = 
   addContents(terseFile, ShepardConds.genderCnds.terse);
 
 
-
   // TODO: iterate over SocialIdentities here next.
 
   appendCounter(conditionalsFile);
   // appendCounter(apiFile);
-  appendCounter(LE2TerseApiFile);
+  appendCounter(LE2TerseCndApiFile);
 };
-writeConditionals(LE2CndFile, LE2CndApiFile, LE2TerseApiFile, 2);
+writeConditionals(LE2CndFile, LE2CndApiFile, LE2TerseCndApiFile, 2);
+makeFile(LE2TerseTransApiFile);
+addContents(LE2TerseTransApiFile, JSON.stringify(Transitions, null, 2));
+
 
 // addContents(OutFile, GlobalState, 'GlobalState');
-// addContents(OutFile, getSocialFrameworkKey, 'getSocialFrameworkKey');
+// addContents(OutFile, getSocFrmwrkCndKey, 'getSocFrmwrkCndKey');
 // addContents(OutFile, IdToSocialState, 'IdToSocialState');
 // addContents(OutFile, ShepardStates, 'ShepardStates');
 // addContents(OutFile, SocialRelationships, 'SocialRelationships');

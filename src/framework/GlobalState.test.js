@@ -44,7 +44,7 @@ describe(`IdToSocialState`, () => {
   });
 });
 
-describe(`getSocialFrameworkKey`, () => {
+describe(`getSocFrmwrkCndKey`, () => {
   [
     {char: 'Aria', social: 'roman', expected: 3033},
     {char: 'Loak', social: 'Roman', expected: 3033},
@@ -56,7 +56,7 @@ describe(`getSocialFrameworkKey`, () => {
     {char: 'Chakwas', social: 'Rival', expected: 5132},
   ].forEach(({char, social, expected}) => {
     it(`"${char}" "${social}" is "${expected}".`, () => {
-      expect(getSocialFrameworkKey(char, social)).toEqual(expected);
+      expect(getSocFrmwrkCndKey(char, social)).toEqual(expected);
     });
   })
 });
