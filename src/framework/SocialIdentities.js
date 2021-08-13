@@ -52,11 +52,11 @@ export const Comparators = [
   '>',
 ];
 export const Genders = {
-  60: 'Female',
-  61: 'Genderqueer',
-  62: 'Male',
-  63: 'Non-binary',
-  64: 'Transgendered',
+  1: 'Female',
+  2: 'Genderqueer',
+  3: 'Male',
+  4: 'Non-binary',
+  5: 'Transgendered',
   // 65: reserved. Add more genders here (and make room below).
 };
 export const Hereditaries = {

@@ -585,4 +585,13 @@ Cnd 26843 ==> LE2 | Zaeed Massani | Sexual Interest(6842) == [[Argument]]
 Cnd 26844 ==> LE2 | Zaeed Massani | Sexual Interest(6842) > [[Argument]]
 Cnd 29911 ==> LE2 | Shepard | Gender Identity(9911) == [[Argument]]
 
+export const Genders = {
+  1: 'Female',
+  2: 'Genderqueer',
+  3: 'Male',
+  4: 'Non-binary',
+  5: 'Transgendered',
+  // 65: reserved. Add more genders here (and make room below).
+};
+
 // Added 586 entries.

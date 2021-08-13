@@ -145,3 +145,23 @@ bCallHandler = FALSE
 VariableLinks = ()
 }
 ```
+
+
+
+
+
+
+### Files with bool checks to update:
+BioD_CitHub_LOC_INT.txt
+    BioD_EndGm1_110ROMJacob_LOC_INT.txt
+    BioD_EndGm1_110ROMMirranda_LOC_INT.txt
+    BioD_Exp1Lvl1_100Apartment_LOC_INT.txt
+    BioD_Exp1Lvl2_430LiaraTalk_LOC_INT.txt
+    BioD_Exp1Lvl4_Stage2_Out_LOC_INT.txt
+    BioD_Exp1Lvl4_Stage3_LOC_INT.txt
+    BioD_Exp1Lvl5_100Stronghold_LOC_INT.txt
+    BioD_Exp1Lvl5_200Cabin_LOC_INT.txt
+    BioD_HorCr1_302SpacePortCin_LOC_INT.txt
+    BioD_KroHub_110GruntLoyalty_LOC_INT.txt
+
+
