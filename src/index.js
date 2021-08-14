@@ -1,11 +1,12 @@
 import _ from 'lodash';
 import fs from 'fs';
-import {BuildDir, LE1Dir, LE2CndApiFile, LE2CndFile, LE2Dir, LE2TerseCndApiFile, LE2TerseTransApiFile, LE3Dir, OutFile,} from './Paths.js';
+import {BuildDir, LE1Dir, LE2CndApiFile, LE2CndFile, LE2Dir, LE2TerseCndApiFile, LE2TerseTransApiFile, LE3Dir, OutFile, StringsApiFile} from './Paths.js';
 import {forEachCharacter} from './framework/Characters.js';
 import {genConditionalApiText, genConditionalText, genTerseApiText, le2ConditionalsHint} from './framework/Conditions.js';
 import {getSocFrmwrkCndKey, getSocFrmwrkRootId, SocialRelationshipsWithComparators} from './framework/SocialRelationships.js';
 import {ShepardConds} from "./framework/ShepardStates.js";
 import Transitions from './framework/Transitions.js';
+import {genStringsApi} from './framework/StringNames.js'
 
 
 const makeDir = (dirPath) => {
@@ -105,6 +106,15 @@ const writeConditionals = (conditionalsFile, apiFile, terseFile, leGamePrefix = 
 writeConditionals(LE2CndFile, LE2CndApiFile, LE2TerseCndApiFile, 2);
 makeFile(LE2TerseTransApiFile);
 addContents(LE2TerseTransApiFile, JSON.stringify(Transitions, null, 2));
+
+
+// Strings file
+makeFile(StringsApiFile);
+const stringsApiObj = genStringsApi();
+_.forEach(stringsApiObj, (stringContent, stringId) => {
+  addContents(StringsApiFile, `(${stringId}) ${stringContent}
+`);
+});
 
 
 // addContents(OutFile, GlobalState, 'GlobalState');

@@ -1,0 +1,39 @@
+(1111130) Aria T'Loak
+(1111131) Armando-Owen Bailey
+(1111132) Ashley Williams
+(1111133) David Anderson
+(1111134) Diana Allers
+(1111135) Donnel Udina
+(1111136) EDI
+(1111137) Emily Wong
+(1111138) Eve Urdnot Bakara
+(1111139) Gabriella Daniels
+(1111140) Garrus Vakarian
+(1111141) Gianni Parasini
+(1111142) Gregory Adams
+(1111143) Grunt
+(1111144) Illusive Man
+(1111145) Jack
+(1111146) Jacob Taylor
+(1111147) James Vega
+(1111148) Javik
+(1111149) Joker Moreau
+(1111150) Kaidan Alenko
+(1111151) Karin Chakwas
+(1111152) Kasumi Goto
+(1111153) Kelly Chambers
+(1111154) Kenneth Donnelly
+(1111155) Legion
+(1111156) Liara T'Soni
+(1111157) Miranda Lawson
+(1111158) Mordin Solus
+(1111159) Morinth
+(1111160) Nyreen Kandros
+(1111161) Samantha Traynor
+(1111162) Samara
+(1111163) Steve Cortez
+(1111164) Steven Hackett
+(1111165) Tali'Zorah vas Normandy
+(1111166) Thane Krios
+(1111167) Urdnot Wrex
+(1111168) Zaeed Massani
