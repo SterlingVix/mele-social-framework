@@ -87,7 +87,7 @@ class Character {
           return; // This is not a valid condition
         }
         const condId = this.genSfKey(socPropId, comparatorId);
-        const plotInt = this.genSfKey(socPropId, _.find(Comparators, cmp => cmp === '=='));
+        const plotInt = this.genSfKey(socPropId, _.findKey(Comparators, cmp => cmp === '=='));
 
         this.conditionals[socPropName][comparatorId] = genConditionalText(
           condId, // conditionId
