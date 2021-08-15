@@ -1,14 +1,6 @@
 import _ from 'lodash';
-import {Characters} from "./SocialIdentities.js";
+import {Characters} from './GlobalVariables.js';
 
-const getBool = () => {};
-const getInt = () => {};
-const setBool = () => {};
-const setInt = () => {};
-
-const getGlobalVars = () => ({
-  sfBuddyRomanceMultiplier: 1,
-});
 
 const initializeSocialFrameworkForCharacter = (configObject) => {
   const {

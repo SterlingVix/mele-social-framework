@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import {forEachCharacter, getShortName} from './Characters.js';
-import {forEachSocialRelationship, getSocFrmwrkCndKey} from "./SocialRelationships.js";
+import {forEachSocialRelationship, getSocFrmwrkCndKey} from './SocialRelationships.js';
 
 
 const genIdToNameMap = () => {

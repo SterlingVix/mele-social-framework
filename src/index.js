@@ -1,12 +1,21 @@
 import _ from 'lodash';
 import fs from 'fs';
-import {BuildDir, LE1Dir, LE2CndApiFile, LE2CndFile, LE2Dir, LE2TerseCndApiFile, LE2TerseTransApiFile, LE3Dir, OutFile, StringsApiFile} from './Paths.js';
-import {forEachCharacter} from './framework/Characters.js';
-import {genConditionalApiText, genConditionalText, genTerseApiText, le2ConditionalsHint} from './framework/Conditions.js';
-import {getSocFrmwrkCndKey, getSocFrmwrkRootId, SocialRelationshipsWithComparators} from './framework/SocialRelationships.js';
-import {ShepardConds} from "./framework/ShepardStates.js";
-import Transitions from './framework/Transitions.js';
-import {genStringsApi} from './framework/StringNames.js'
+import {
+  BuildDir,
+  LE1Dir,
+  LE2CndFile,
+  LE2Dir,
+  LE2TerseTransApiFile,
+  LE2TransDecrFile,
+  LE2TransIncrFile,
+  LE2TransSetFile,
+  LE3Dir,
+  OutFile,
+  StringsApiFile,
+} from './Paths.js';
+import Characters from './framework/Characters.js';
+import Strings from './framework/StringNames.js'
+import {Comparators} from "./framework/GlobalVariables.js";
 
 
 const makeDir = (dirPath) => {
@@ -46,86 +55,69 @@ makeDir(LE3Dir);
 
 makeFile(OutFile);
 
-const appendCounter = (file) => addContents(file, `
+const appendCounter = (file, thisCounter) => addContents(file, `
 
-// Added ${counter} entries.`);
+// Added ${thisCounter} entries.`);
 
-const writeConditionals = (conditionalsFile, apiFile, terseFile, leGamePrefix = 2) => {
+const writeConditionals = (conditionalsFile) => {
   counter = 0;
   // initialize files.
   makeFile(conditionalsFile);
-  makeFile(apiFile);
-  addContents(apiFile, '', le2ConditionalsHint);
-  makeFile(terseFile);
 
-
-  // Write contents to files.
-  forEachCharacter((charName, charIdStr) => {
-    _.forEach(SocialRelationshipsWithComparators, ({comparator, conditionName}, stateIdStr) => {
-      counter++;
-
-      const conditionId = getSocFrmwrkCndKey(charIdStr, stateIdStr, leGamePrefix);
-      const comment = `LE${leGamePrefix} | ${charName} | ${conditionName} ${comparator} [[Argument]]`;
-      const rootId = getSocFrmwrkRootId(charIdStr, conditionName);
-
-      const conditionalsParams = [
-        conditionId,
-        comment,
-        comparator,
-        rootId,
-      ];
-      addContents(conditionalsFile, genConditionalText(...conditionalsParams));
-      addContents(apiFile, genConditionalApiText(...conditionalsParams));
-      addContents(
-        terseFile,
-        genTerseApiText(
-          conditionId,
-          charName,
-          conditionName,
-          rootId,
-          comparator,
-          leGamePrefix,
-        ),
-      );
+  // Conditionals file.
+  _.forEach(Characters, (character) => {
+    _.forEach(character.conditionals, (conditional) => {
+      _.forEach(conditional, (conditionalForComparator) => {
+        counter++;
+        addContents(conditionalsFile, conditionalForComparator);
+      });
     });
   });
 
-  // Shepard Conditions
-  counter++;
-  addContents(conditionalsFile, ShepardConds.genderCnds.cnd);
-  addContents(apiFile, ShepardConds.genderCnds.api);
-  addContents(terseFile, ShepardConds.genderCnds.terse);
-
-
-  // TODO: iterate over SocialIdentities here next.
-
-  appendCounter(conditionalsFile);
-  // appendCounter(apiFile);
-  appendCounter(LE2TerseCndApiFile);
+  appendCounter(conditionalsFile, counter);
 };
-writeConditionals(LE2CndFile, LE2CndApiFile, LE2TerseCndApiFile, 2);
-makeFile(LE2TerseTransApiFile);
-addContents(LE2TerseTransApiFile, JSON.stringify(Transitions, null, 2));
+
+writeConditionals(LE2CndFile);
+
+const writeTransitionals = () => {
+  let transDecrCounter = 0;
+  let transIncrCounter = 0;
+  let transSetCounter = 0;
+
+  // initialize files.
+  makeFile(LE2TransDecrFile);
+  makeFile(LE2TransIncrFile);
+  makeFile(LE2TransSetFile);
+
+  // Transitions files.
+  _.forEach(Characters, (character) => {
+    _.forEach(character.transitions, (transition) => {
+      _.forEach(transition, (transitionByModificationType, comparatorId) => {
+
+        if (comparatorId === _.findKey(Comparators, cmp => cmp === '==')) {
+          transSetCounter++;
+          addContents(LE2TransDecrFile, transitionByModificationType);
+        } else if (comparatorId === _.findKey(Comparators, cmp => cmp === '<')) {
+          transDecrCounter++;
+          addContents(LE2TransIncrFile, transitionByModificationType);
+        } else if (comparatorId === _.findKey(Comparators, cmp => cmp === '>')) {
+          transIncrCounter++;
+          addContents(LE2TransSetFile, transitionByModificationType);
+        }
+      });
+    });
+  });
+
+  appendCounter(LE2TransDecrFile, transDecrCounter);
+  appendCounter(LE2TransIncrFile, transIncrCounter);
+  appendCounter(LE2TransSetFile, transSetCounter);
+};
+writeTransitionals();
 
 
 // Strings file
 makeFile(StringsApiFile);
-const stringsApiObj = genStringsApi();
-_.forEach(stringsApiObj, (stringContent, stringId) => {
+_.forEach(Strings, (stringContent, stringId) => {
   addContents(StringsApiFile, `(${stringId}) ${stringContent}
 `);
 });
-
-
-// addContents(OutFile, GlobalState, 'GlobalState');
-// addContents(OutFile, getSocFrmwrkCndKey, 'getSocFrmwrkCndKey');
-// addContents(OutFile, IdToSocialState, 'IdToSocialState');
-// addContents(OutFile, ShepardStates, 'ShepardStates');
-// addContents(OutFile, SocialRelationships, 'SocialRelationships');
-// addContents(OutFile, SocialStateToId, 'SocialStateToId');
-
-const writeCondition = (dirPath, comment, cndId, int = null, bool = null) => {
-  /*
-
-   */
-}

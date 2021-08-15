@@ -31,9 +31,10 @@
 (1111160) Nyreen Kandros
 (1111161) Samantha Traynor
 (1111162) Samara
-(1111163) Steve Cortez
-(1111164) Steven Hackett
-(1111165) Tali'Zorah vas Normandy
-(1111166) Thane Krios
-(1111167) Urdnot Wrex
-(1111168) Zaeed Massani
+(1111163) Shepard
+(1111164) Steve Cortez
+(1111165) Steven Hackett
+(1111166) Tali'Zorah vas Normandy
+(1111167) Thane Krios
+(1111168) Urdnot Wrex
+(1111169) Zaeed Massani

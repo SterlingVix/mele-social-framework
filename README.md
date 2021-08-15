@@ -28,6 +28,20 @@ All API references are for editing Dialogs and Sequences.
 
 Conditionals, Ints, and Transitions should be the same across all 3 MELE games. This obviously means there will be a lot of unused material by default (i.e. you will obviously not encounter Javik in LE1 vanilla, but Social Framework will still inject tracking for Javiik into LE1 & LE2).
 
+### Replacement regexes
+To ensure Conditionals and Transitions are correctly converted to the Social Framework, dump the files (using ME3 tools) and search with these regexes:
+```textmate
+FIXME: These are not the final regexes.
+
+nConditional.+(digits)
+
+nConditionalFunc.+(digits)
+  nConditionalParam
+
+nStateTrans.+(digits)
+  nStateTransitionParam
+```
+
 ### Gender
 ```textmate
 // Conditions

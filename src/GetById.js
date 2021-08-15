@@ -3,7 +3,7 @@ import Characters, { getShortName } from './framework/Characters.js';
 
 export const getCharName = (charId) => {
   if (!_.isNumber(charId)) {
-    throw new Error(`"charId" must be an integer. Received: ${typeof charId}: ${charId}.`);
+    throw new Error(`'charId' must be an integer. Received: ${typeof charId}: ${charId}.`);
   } else {
     return Characters[charId]
   }
@@ -21,6 +21,6 @@ export const getCharacter = (charNameOrId) => {
   } else if (_.isString(charNameOrId)) {
     return getCharId(charNameOrId);
   } else {
-    throw new Error(`"charNameOrId" must be a string or integer. Received: ${typeof charNameOrId}: ${charNameOrId}.`);
+    throw new Error(`'charNameOrId' must be a string or integer. Received: ${typeof charNameOrId}: ${charNameOrId}.`);
   }
 };

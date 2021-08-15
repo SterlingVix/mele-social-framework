@@ -1,17 +1,13 @@
 import _ from 'lodash';
-import {Characters} from './SocialIdentities.js'
+import Characters from './Characters.js'
 
 const _charNameStringsPrefix = 11111;
 
 // These will be added to TLK files to provide Strings for convenience.
-export const genStringsApi = () => {
-  const stringMap = {};
-  _.forEach(Characters, (characterName, charId) => {
-    const charNameKey = _.toInteger(`${_charNameStringsPrefix}${charId}`);
-    stringMap[charNameKey] = characterName;
-  });
+const Strings = {};
+_.forEach(Characters, (character) => {
+  const charNameKey = _.toInteger(`${_charNameStringsPrefix}${character.characterId}`);
+  Strings[charNameKey] = character.characterName;
+});
 
-  // TODO: strings for Cnd API?
-
-  return stringMap;
-};
+export default Strings;
