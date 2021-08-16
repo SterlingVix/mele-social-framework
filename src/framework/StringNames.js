@@ -35,7 +35,12 @@ _.forEach(Characters, (character) => {
 Strings[_prefixString(sfPropIds.comparators, 10)] = 'Comparators';
 _.forEach(Comparators, (descr, idx) => {
   const key = _.toInteger(_prefixString(sfPropIds.comparators, `0${idx}`));
-  Strings[key] = descr;
+  const xmlFriendlyDescriptions = {
+    '==': 'Equals',
+    '<': 'Less than',
+    '>': 'Greater than',
+  };
+  Strings[key] = xmlFriendlyDescriptions[descr];
 });
 
 Strings[_prefixString(sfPropIds.genders, 10)] = 'Genders';

@@ -5,6 +5,7 @@ import {
   LE1Dir,
   LE2CndFile,
   LE2Dir,
+  LE2ModsDirSringsFile,
   LE2TerseTransApiFile,
   LE2TransDecrFile,
   LE2TransIncrFile,
@@ -115,9 +116,36 @@ const writeTransitionals = () => {
 writeTransitionals();
 
 
-// Strings file
-makeFile(StringsApiFile);
-_.forEach(Strings, (stringContent, stringId) => {
-  addContents(StringsApiFile, `(${stringId}) ${stringContent}
+// Strings files
+const genStringsXmlStart = () => (`<?xml version="1.0" encoding="utf-8"?>
+<tlkFile TLKToolVersion="4.0.0.0">
+    <!--Male entries section begin-->
+    <String id="3030">Social Framework</String>
+    <String id="3031">DLC_3030</String>
+    <String id="3032">en-us</String>
+    <String id="3033">Male</String>
 `);
-});
+const genStringsXmlEnd = () => (`    <!--Male entries section end-->
+    <!--Female entries section begin-->
+    <String id="3033">Female</String>
+    <!--Female entries section end-->
+</tlkFile>`);
+
+const genStringsFiles = () => {
+  makeFile(StringsApiFile);
+  makeFile(LE2ModsDirSringsFile);
+
+
+  addContents(StringsApiFile, genStringsXmlStart());
+  addContents(LE2ModsDirSringsFile, genStringsXmlStart());
+  _.forEach(Strings, (stringContent, stringId) => {
+    addContents(StringsApiFile, `    <String id="${stringId}">${stringContent}</String>
+`);
+    addContents(LE2ModsDirSringsFile, `    <String id="${stringId}">${stringContent}</String>
+`);
+  });
+  addContents(StringsApiFile, genStringsXmlEnd());
+  addContents(LE2ModsDirSringsFile, genStringsXmlEnd());
+};
+
+genStringsFiles();
