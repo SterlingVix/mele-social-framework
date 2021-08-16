@@ -18,15 +18,6 @@ const sfPropIds = {
 // These will be added to TLK files to provide Strings for convenience.
 const Strings = {};
 
-
-
-
-
-
-
-
-
-
 _.forEach(Characters, (character) => {
   const charNameKey = _.toInteger(_prefixString(sfPropIds.character, character.characterId));
   Strings[charNameKey] = character.characterName;
@@ -74,5 +65,6 @@ Strings[_prefixString(`${sfPropIds.devText}`, 12)] = 'Decrement';
 Strings[_prefixString(`${sfPropIds.devText}`, 13)] = 'Increment';
 Strings[_prefixString(`${sfPropIds.devText}`, 14)] = 'Initialize';
 Strings[_prefixString(`${sfPropIds.devText}`, 15)] = 'Set';
+Strings[_prefixString(`${sfPropIds.devText}`, 16)] = '__UNSAFE__ initialize via Conditional';
 
 export default Strings;

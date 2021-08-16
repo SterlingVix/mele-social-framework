@@ -11,6 +11,7 @@
     <String id="1111013">Increment</String>
     <String id="1111014">Initialize</String>
     <String id="1111015">Set</String>
+    <String id="1111016">__UNSAFE__ initialize via Conditional</String>
     <String id="1111130">Aria T'Loak</String>
     <String id="1111131">Armando-Owen Bailey</String>
     <String id="1111132">Ashley Williams</String>
@@ -55,7 +56,6 @@
     <String id="1111202">Less than</String>
     <String id="1111203">Greater than</String>
     <String id="1111210">Comparators</String>
-
     <String id="1111310">Genders</String>
     <String id="1111311">Female</String>
     <String id="1111312">Genderqueer</String>
@@ -63,7 +63,6 @@
     <String id="1111314">Non-binary</String>
     <String id="1111315">Non-gendered</String>
     <String id="1111316">Transgendered</String>
-
     <String id="1111410">Hereditaries</String>
     <String id="1111411">Asari</String>
     <String id="1111412">Batarian</String>
