@@ -46,18 +46,8 @@ class Character {
   }
 
   genConditionals = () => {
-    const conditionalsValidForShepard = [
-      SocialProperties.Gender,
-      SocialProperties.Hereditary,
-      SocialProperties.Profession,
-    ];
     const socialPropsWithEqualsOnly = [
       SocialProperties.Gender,
-      SocialProperties.Hereditary,
-      SocialProperties.Profession,
-    ];
-    const socialPropsToSkipForShepard = [
-      // TODO: this is good to add, but until it's used I'm reducing work.
       SocialProperties.Hereditary,
       SocialProperties.Profession,
     ];
@@ -70,6 +60,15 @@ class Character {
       this.conditionals[socPropName] = {};
 
       if (this.isShepard) {
+        const conditionalsValidForShepard = [
+          SocialProperties.Gender,
+          SocialProperties.Hereditary,
+          SocialProperties.Profession,
+        ];
+        const socialPropsToSkipForShepard = [
+          SocialProperties.Hereditary, // TODO: this is good to add, but until it's used I'm reducing work.
+          SocialProperties.Profession, // TODO: this is good to add, but until it's used I'm reducing work.
+        ];
         const isCondValidForShepard = _.includes(conditionalsValidForShepard, socPropId);
         const isCondSkipped = _.includes(socialPropsToSkipForShepard, socPropId);
         if (!isCondValidForShepard || isCondSkipped) {
@@ -99,18 +98,8 @@ class Character {
   };
 
   genTransitions = () => {
-    const transitionsValidForShepard = [
-      SocialProperties.Gender,
-      SocialProperties.Hereditary,
-      SocialProperties.Profession,
-    ];
     const socialPropsWithSettersOnly = [
       SocialProperties.Gender,
-      SocialProperties.Hereditary,
-      SocialProperties.Profession,
-    ];
-    const socialPropsToSkipForShepard = [
-      // TODO: this is good to add, but until it's used I'm reducing work.
       SocialProperties.Hereditary,
       SocialProperties.Profession,
     ];
@@ -124,8 +113,19 @@ class Character {
       this.transitions[socPropName] = {};
 
       if (this.isShepard) {
+        const transitionsValidForShepard = [
+          SocialProperties.Gender,
+          SocialProperties.Hereditary,
+          SocialProperties.Profession,
+        ];
+        const socialPropsToSkipForShepard = [
+          SocialProperties.Hereditary, // TODO: this is good to add, but until it's used I'm reducing work.
+          SocialProperties.Profession, // TODO: this is good to add, but until it's used I'm reducing work.
+        ];
         const isTransValidForShepard = _.includes(transitionsValidForShepard, socPropId);
         const isTransSkipped = _.includes(socialPropsToSkipForShepard, socPropId);
+        // console.log("-> socPropName", socPropName);
+        // console.log("-> isTransValidForShepard, isTransSkipped", isTransValidForShepard, isTransSkipped);
         if (!isTransValidForShepard || isTransSkipped) {
           return; // This is not a valid transition for Shepard
         }

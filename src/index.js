@@ -96,13 +96,13 @@ const writeTransitionals = () => {
 
         if (comparatorId === _.findKey(Comparators, cmp => cmp === '==')) {
           transSetCounter++;
-          addContents(LE2TransDecrFile, transitionByModificationType);
+          addContents(LE2TransSetFile, transitionByModificationType);
         } else if (comparatorId === _.findKey(Comparators, cmp => cmp === '<')) {
           transDecrCounter++;
-          addContents(LE2TransIncrFile, transitionByModificationType);
+          addContents(LE2TransDecrFile, transitionByModificationType);
         } else if (comparatorId === _.findKey(Comparators, cmp => cmp === '>')) {
           transIncrCounter++;
-          addContents(LE2TransSetFile, transitionByModificationType);
+          addContents(LE2TransIncrFile, transitionByModificationType);
         }
       });
     });
