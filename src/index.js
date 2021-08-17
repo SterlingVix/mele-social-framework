@@ -5,7 +5,7 @@ import {
   LE1Dir,
   LE2CndFile,
   LE2Dir,
-  LE2InitFuncs,
+  LE2UNSAFECondInitFuncs,
   LE2ModsDirSringsFile,
   LE2TerseTransApiFile,
   LE2TransDecrFile,
@@ -90,7 +90,7 @@ const writeUnsafeConditionals = (conditionalsFile, gameNumber) => {
     }
   });
 };
-writeUnsafeConditionals(LE2InitFuncs, 2);
+writeUnsafeConditionals(LE2UNSAFECondInitFuncs, 2);
 
 
 // Transitions
