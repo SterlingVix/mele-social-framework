@@ -584,6 +584,3 @@ public function bool F69373(BioWorldInfo bioWorld, int Argument) {local BioGloba
 public function bool F69381(BioWorldInfo bioWorld, int Argument) {local BioGlobalVariableTable gv; gv = bioWorld.GetGlobalVariables(); return gv.GetInt(69381) == Argument; }
 public function bool F69382(BioWorldInfo bioWorld, int Argument) {local BioGlobalVariableTable gv; gv = bioWorld.GetGlobalVariables(); return gv.GetInt(69381) < Argument; }
 public function bool F69383(BioWorldInfo bioWorld, int Argument) {local BioGlobalVariableTable gv; gv = bioWorld.GetGlobalVariables(); return gv.GetInt(69381) > Argument; }
-
-
-// Added 586 entries.

@@ -18,6 +18,7 @@ import {
 import Characters from './framework/Characters.js';
 import Strings from './framework/StringNames.js'
 import {Comparators} from "./framework/GlobalVariables.js";
+import {genInitFunc} from './framework/initializeNormalize.js';
 
 
 const makeDir = (dirPath) => {
@@ -61,8 +62,9 @@ const appendCounter = (file, thisCounter) => addContents(file, `
 
 // Added ${thisCounter} entries.`);
 
+
+// Conditionals
 const writeConditionals = (conditionalsFile) => {
-  counter = 0;
   // initialize files.
   makeFile(conditionalsFile);
 
@@ -75,12 +77,23 @@ const writeConditionals = (conditionalsFile) => {
       });
     });
   });
-
-  appendCounter(conditionalsFile, counter);
 };
-
 writeConditionals(LE2CndFile);
 
+const writeUnsafeConditionals = (conditionalsFile, gameNumber) => {
+  makeFile(conditionalsFile);
+
+  _.forEach(Characters, (character) => {
+    const buddyRomancePlotInt = _.nth(character.vanillaBuddyRomancePlotInt, gameNumber - 1)
+    if (buddyRomancePlotInt) {
+      addContents(conditionalsFile, genInitFunc(character, gameNumber));
+    }
+  });
+};
+writeUnsafeConditionals(LE2InitFuncs, 2);
+
+
+// Transitions
 const writeTransitionals = () => {
   let transDecrCounter = 0;
   let transIncrCounter = 0;

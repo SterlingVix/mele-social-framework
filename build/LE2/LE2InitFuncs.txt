@@ -1,0 +1,550 @@
+public function bool F99240(BioWorldInfo bioWorld, int Argument)
+{
+    local int _note_ThisIsUnsafe_ThisConditionalHasSideEffectsForInitialization;
+    local bool Garrus_Vakarian;
+    local bool isVanillaRomanceOption;
+    local bool isVanillaShepardFemale;
+    local int charPrefixPart;
+    local BioGlobalVariableTable gv;
+    local int currentBuddyRomanceVal;
+    local int friendshipPlotInt;
+    local int genderPlotInt;
+    local int hereditaryPlotInt;
+    local int loyaltyPlotInt;
+    local int professionPlotInt;
+    local int rivalryPlotInt;
+    local int romanticInterestPlotInt;
+    local int sexualInterestPlotInt;
+    
+    gv = bioWorld.GetGlobalVariables();
+    currentBuddyRomanceVal = gv.GetInt(270);
+    isVanillaShepardFemale = gv.GetBool(66);
+    if (isVanillaShepardFemale)
+    {
+        isVanillaRomanceOption = TRUE;
+    }
+    else
+    {
+        isVanillaRomanceOption = FALSE;
+    }
+    friendshipPlotInt = 40311;
+    rivalryPlotInt = 40361;
+    sexualInterestPlotInt = 40381;
+    romanticInterestPlotInt = 40371;
+    gv.SetInt(friendshipPlotInt, currentBuddyRomanceVal);
+    gv.SetInt(rivalryPlotInt, 1);
+    if (isVanillaRomanceOption)
+    {
+        gv.SetInt(romanticInterestPlotInt, currentBuddyRomanceVal);
+        gv.SetInt(sexualInterestPlotInt, currentBuddyRomanceVal);
+    }
+    else
+    {
+        gv.SetInt(romanticInterestPlotInt, -1);
+        gv.SetInt(sexualInterestPlotInt, -1);
+    }
+    return TRUE;
+}
+
+
+
+public function bool F99243(BioWorldInfo bioWorld, int Argument)
+{
+    local int _note_ThisIsUnsafe_ThisConditionalHasSideEffectsForInitialization;
+    local bool Grunt;
+    local bool isVanillaRomanceOption;
+    local bool isVanillaShepardFemale;
+    local int charPrefixPart;
+    local BioGlobalVariableTable gv;
+    local int currentBuddyRomanceVal;
+    local int friendshipPlotInt;
+    local int genderPlotInt;
+    local int hereditaryPlotInt;
+    local int loyaltyPlotInt;
+    local int professionPlotInt;
+    local int rivalryPlotInt;
+    local int romanticInterestPlotInt;
+    local int sexualInterestPlotInt;
+    
+    gv = bioWorld.GetGlobalVariables();
+    currentBuddyRomanceVal = gv.GetInt(274);
+    isVanillaShepardFemale = gv.GetBool(66);
+    if (isVanillaShepardFemale)
+    {
+        isVanillaRomanceOption = TRUE;
+    }
+    else
+    {
+        isVanillaRomanceOption = FALSE;
+    }
+    friendshipPlotInt = 43311;
+    rivalryPlotInt = 43361;
+    sexualInterestPlotInt = 43381;
+    romanticInterestPlotInt = 43371;
+    gv.SetInt(friendshipPlotInt, currentBuddyRomanceVal);
+    gv.SetInt(rivalryPlotInt, 1);
+    if (isVanillaRomanceOption)
+    {
+        gv.SetInt(romanticInterestPlotInt, currentBuddyRomanceVal);
+        gv.SetInt(sexualInterestPlotInt, currentBuddyRomanceVal);
+    }
+    else
+    {
+        gv.SetInt(romanticInterestPlotInt, -1);
+        gv.SetInt(sexualInterestPlotInt, -1);
+    }
+    return TRUE;
+}
+
+
+
+public function bool F99245(BioWorldInfo bioWorld, int Argument)
+{
+    local int _note_ThisIsUnsafe_ThisConditionalHasSideEffectsForInitialization;
+    local bool Jack;
+    local bool isVanillaRomanceOption;
+    local bool isVanillaShepardFemale;
+    local int charPrefixPart;
+    local BioGlobalVariableTable gv;
+    local int currentBuddyRomanceVal;
+    local int friendshipPlotInt;
+    local int genderPlotInt;
+    local int hereditaryPlotInt;
+    local int loyaltyPlotInt;
+    local int professionPlotInt;
+    local int rivalryPlotInt;
+    local int romanticInterestPlotInt;
+    local int sexualInterestPlotInt;
+    
+    gv = bioWorld.GetGlobalVariables();
+    currentBuddyRomanceVal = gv.GetInt(213);
+    isVanillaShepardFemale = gv.GetBool(66);
+    if (isVanillaShepardFemale)
+    {
+        isVanillaRomanceOption = TRUE;
+    }
+    else
+    {
+        isVanillaRomanceOption = FALSE;
+    }
+    friendshipPlotInt = 45311;
+    rivalryPlotInt = 45361;
+    sexualInterestPlotInt = 45381;
+    romanticInterestPlotInt = 45371;
+    gv.SetInt(friendshipPlotInt, currentBuddyRomanceVal);
+    gv.SetInt(rivalryPlotInt, 1);
+    if (isVanillaRomanceOption)
+    {
+        gv.SetInt(romanticInterestPlotInt, currentBuddyRomanceVal);
+        gv.SetInt(sexualInterestPlotInt, currentBuddyRomanceVal);
+    }
+    else
+    {
+        gv.SetInt(romanticInterestPlotInt, -1);
+        gv.SetInt(sexualInterestPlotInt, -1);
+    }
+    return TRUE;
+}
+
+
+
+public function bool F99246(BioWorldInfo bioWorld, int Argument)
+{
+    local int _note_ThisIsUnsafe_ThisConditionalHasSideEffectsForInitialization;
+    local bool Jacob_Taylor;
+    local bool isVanillaRomanceOption;
+    local bool isVanillaShepardFemale;
+    local int charPrefixPart;
+    local BioGlobalVariableTable gv;
+    local int currentBuddyRomanceVal;
+    local int friendshipPlotInt;
+    local int genderPlotInt;
+    local int hereditaryPlotInt;
+    local int loyaltyPlotInt;
+    local int professionPlotInt;
+    local int rivalryPlotInt;
+    local int romanticInterestPlotInt;
+    local int sexualInterestPlotInt;
+    
+    gv = bioWorld.GetGlobalVariables();
+    currentBuddyRomanceVal = gv.GetInt(267);
+    isVanillaShepardFemale = gv.GetBool(66);
+    if (isVanillaShepardFemale)
+    {
+        isVanillaRomanceOption = TRUE;
+    }
+    else
+    {
+        isVanillaRomanceOption = FALSE;
+    }
+    friendshipPlotInt = 46311;
+    rivalryPlotInt = 46361;
+    sexualInterestPlotInt = 46381;
+    romanticInterestPlotInt = 46371;
+    gv.SetInt(friendshipPlotInt, currentBuddyRomanceVal);
+    gv.SetInt(rivalryPlotInt, 1);
+    if (isVanillaRomanceOption)
+    {
+        gv.SetInt(romanticInterestPlotInt, currentBuddyRomanceVal);
+        gv.SetInt(sexualInterestPlotInt, currentBuddyRomanceVal);
+    }
+    else
+    {
+        gv.SetInt(romanticInterestPlotInt, -1);
+        gv.SetInt(sexualInterestPlotInt, -1);
+    }
+    return TRUE;
+}
+
+
+
+public function bool F99253(BioWorldInfo bioWorld, int Argument)
+{
+    local int _note_ThisIsUnsafe_ThisConditionalHasSideEffectsForInitialization;
+    local bool Kelly_Chambers;
+    local bool isVanillaRomanceOption;
+    local bool isVanillaShepardFemale;
+    local int charPrefixPart;
+    local BioGlobalVariableTable gv;
+    local int currentBuddyRomanceVal;
+    local int friendshipPlotInt;
+    local int genderPlotInt;
+    local int hereditaryPlotInt;
+    local int loyaltyPlotInt;
+    local int professionPlotInt;
+    local int rivalryPlotInt;
+    local int romanticInterestPlotInt;
+    local int sexualInterestPlotInt;
+    
+    gv = bioWorld.GetGlobalVariables();
+    currentBuddyRomanceVal = gv.GetInt(197);
+    isVanillaShepardFemale = gv.GetBool(66);
+    if (isVanillaShepardFemale)
+    {
+        isVanillaRomanceOption = TRUE;
+    }
+    else
+    {
+        isVanillaRomanceOption = FALSE;
+    }
+    friendshipPlotInt = 53311;
+    rivalryPlotInt = 53361;
+    sexualInterestPlotInt = 53381;
+    romanticInterestPlotInt = 53371;
+    gv.SetInt(friendshipPlotInt, currentBuddyRomanceVal);
+    gv.SetInt(rivalryPlotInt, 1);
+    if (isVanillaRomanceOption)
+    {
+        gv.SetInt(romanticInterestPlotInt, currentBuddyRomanceVal);
+        gv.SetInt(sexualInterestPlotInt, currentBuddyRomanceVal);
+    }
+    else
+    {
+        gv.SetInt(romanticInterestPlotInt, -1);
+        gv.SetInt(sexualInterestPlotInt, -1);
+    }
+    return TRUE;
+}
+
+
+
+public function bool F99255(BioWorldInfo bioWorld, int Argument)
+{
+    local int _note_ThisIsUnsafe_ThisConditionalHasSideEffectsForInitialization;
+    local bool Legion;
+    local bool isVanillaRomanceOption;
+    local bool isVanillaShepardFemale;
+    local int charPrefixPart;
+    local BioGlobalVariableTable gv;
+    local int currentBuddyRomanceVal;
+    local int friendshipPlotInt;
+    local int genderPlotInt;
+    local int hereditaryPlotInt;
+    local int loyaltyPlotInt;
+    local int professionPlotInt;
+    local int rivalryPlotInt;
+    local int romanticInterestPlotInt;
+    local int sexualInterestPlotInt;
+    
+    gv = bioWorld.GetGlobalVariables();
+    currentBuddyRomanceVal = gv.GetInt(268);
+    isVanillaShepardFemale = gv.GetBool(66);
+    if (isVanillaShepardFemale)
+    {
+        isVanillaRomanceOption = TRUE;
+    }
+    else
+    {
+        isVanillaRomanceOption = FALSE;
+    }
+    friendshipPlotInt = 55311;
+    rivalryPlotInt = 55361;
+    sexualInterestPlotInt = 55381;
+    romanticInterestPlotInt = 55371;
+    gv.SetInt(friendshipPlotInt, currentBuddyRomanceVal);
+    gv.SetInt(rivalryPlotInt, 1);
+    if (isVanillaRomanceOption)
+    {
+        gv.SetInt(romanticInterestPlotInt, currentBuddyRomanceVal);
+        gv.SetInt(sexualInterestPlotInt, currentBuddyRomanceVal);
+    }
+    else
+    {
+        gv.SetInt(romanticInterestPlotInt, -1);
+        gv.SetInt(sexualInterestPlotInt, -1);
+    }
+    return TRUE;
+}
+
+
+
+public function bool F99257(BioWorldInfo bioWorld, int Argument)
+{
+    local int _note_ThisIsUnsafe_ThisConditionalHasSideEffectsForInitialization;
+    local bool Miranda_Lawson;
+    local bool isVanillaRomanceOption;
+    local bool isVanillaShepardFemale;
+    local int charPrefixPart;
+    local BioGlobalVariableTable gv;
+    local int currentBuddyRomanceVal;
+    local int friendshipPlotInt;
+    local int genderPlotInt;
+    local int hereditaryPlotInt;
+    local int loyaltyPlotInt;
+    local int professionPlotInt;
+    local int rivalryPlotInt;
+    local int romanticInterestPlotInt;
+    local int sexualInterestPlotInt;
+    
+    gv = bioWorld.GetGlobalVariables();
+    currentBuddyRomanceVal = gv.GetInt(266);
+    isVanillaShepardFemale = gv.GetBool(66);
+    if (isVanillaShepardFemale)
+    {
+        isVanillaRomanceOption = TRUE;
+    }
+    else
+    {
+        isVanillaRomanceOption = FALSE;
+    }
+    friendshipPlotInt = 57311;
+    rivalryPlotInt = 57361;
+    sexualInterestPlotInt = 57381;
+    romanticInterestPlotInt = 57371;
+    gv.SetInt(friendshipPlotInt, currentBuddyRomanceVal);
+    gv.SetInt(rivalryPlotInt, 1);
+    if (isVanillaRomanceOption)
+    {
+        gv.SetInt(romanticInterestPlotInt, currentBuddyRomanceVal);
+        gv.SetInt(sexualInterestPlotInt, currentBuddyRomanceVal);
+    }
+    else
+    {
+        gv.SetInt(romanticInterestPlotInt, -1);
+        gv.SetInt(sexualInterestPlotInt, -1);
+    }
+    return TRUE;
+}
+
+
+
+public function bool F99258(BioWorldInfo bioWorld, int Argument)
+{
+    local int _note_ThisIsUnsafe_ThisConditionalHasSideEffectsForInitialization;
+    local bool Mordin_Solus;
+    local bool isVanillaRomanceOption;
+    local bool isVanillaShepardFemale;
+    local int charPrefixPart;
+    local BioGlobalVariableTable gv;
+    local int currentBuddyRomanceVal;
+    local int friendshipPlotInt;
+    local int genderPlotInt;
+    local int hereditaryPlotInt;
+    local int loyaltyPlotInt;
+    local int professionPlotInt;
+    local int rivalryPlotInt;
+    local int romanticInterestPlotInt;
+    local int sexualInterestPlotInt;
+    
+    gv = bioWorld.GetGlobalVariables();
+    currentBuddyRomanceVal = gv.GetInt(273);
+    isVanillaShepardFemale = gv.GetBool(66);
+    if (isVanillaShepardFemale)
+    {
+        isVanillaRomanceOption = TRUE;
+    }
+    else
+    {
+        isVanillaRomanceOption = FALSE;
+    }
+    friendshipPlotInt = 58311;
+    rivalryPlotInt = 58361;
+    sexualInterestPlotInt = 58381;
+    romanticInterestPlotInt = 58371;
+    gv.SetInt(friendshipPlotInt, currentBuddyRomanceVal);
+    gv.SetInt(rivalryPlotInt, 1);
+    if (isVanillaRomanceOption)
+    {
+        gv.SetInt(romanticInterestPlotInt, currentBuddyRomanceVal);
+        gv.SetInt(sexualInterestPlotInt, currentBuddyRomanceVal);
+    }
+    else
+    {
+        gv.SetInt(romanticInterestPlotInt, -1);
+        gv.SetInt(sexualInterestPlotInt, -1);
+    }
+    return TRUE;
+}
+
+
+
+public function bool F99262(BioWorldInfo bioWorld, int Argument)
+{
+    local int _note_ThisIsUnsafe_ThisConditionalHasSideEffectsForInitialization;
+    local bool Samara;
+    local bool isVanillaRomanceOption;
+    local bool isVanillaShepardFemale;
+    local int charPrefixPart;
+    local BioGlobalVariableTable gv;
+    local int currentBuddyRomanceVal;
+    local int friendshipPlotInt;
+    local int genderPlotInt;
+    local int hereditaryPlotInt;
+    local int loyaltyPlotInt;
+    local int professionPlotInt;
+    local int rivalryPlotInt;
+    local int romanticInterestPlotInt;
+    local int sexualInterestPlotInt;
+    
+    gv = bioWorld.GetGlobalVariables();
+    currentBuddyRomanceVal = gv.GetInt(275);
+    isVanillaShepardFemale = gv.GetBool(66);
+    if (isVanillaShepardFemale)
+    {
+        isVanillaRomanceOption = TRUE;
+    }
+    else
+    {
+        isVanillaRomanceOption = FALSE;
+    }
+    friendshipPlotInt = 62311;
+    rivalryPlotInt = 62361;
+    sexualInterestPlotInt = 62381;
+    romanticInterestPlotInt = 62371;
+    gv.SetInt(friendshipPlotInt, currentBuddyRomanceVal);
+    gv.SetInt(rivalryPlotInt, 1);
+    if (isVanillaRomanceOption)
+    {
+        gv.SetInt(romanticInterestPlotInt, currentBuddyRomanceVal);
+        gv.SetInt(sexualInterestPlotInt, currentBuddyRomanceVal);
+    }
+    else
+    {
+        gv.SetInt(romanticInterestPlotInt, -1);
+        gv.SetInt(sexualInterestPlotInt, -1);
+    }
+    return TRUE;
+}
+
+
+
+public function bool F99266(BioWorldInfo bioWorld, int Argument)
+{
+    local int _note_ThisIsUnsafe_ThisConditionalHasSideEffectsForInitialization;
+    local bool Tali_Zorah_vas_Normandy;
+    local bool isVanillaRomanceOption;
+    local bool isVanillaShepardFemale;
+    local int charPrefixPart;
+    local BioGlobalVariableTable gv;
+    local int currentBuddyRomanceVal;
+    local int friendshipPlotInt;
+    local int genderPlotInt;
+    local int hereditaryPlotInt;
+    local int loyaltyPlotInt;
+    local int professionPlotInt;
+    local int rivalryPlotInt;
+    local int romanticInterestPlotInt;
+    local int sexualInterestPlotInt;
+    
+    gv = bioWorld.GetGlobalVariables();
+    currentBuddyRomanceVal = gv.GetInt(272);
+    isVanillaShepardFemale = gv.GetBool(66);
+    if (isVanillaShepardFemale)
+    {
+        isVanillaRomanceOption = TRUE;
+    }
+    else
+    {
+        isVanillaRomanceOption = FALSE;
+    }
+    friendshipPlotInt = 66311;
+    rivalryPlotInt = 66361;
+    sexualInterestPlotInt = 66381;
+    romanticInterestPlotInt = 66371;
+    gv.SetInt(friendshipPlotInt, currentBuddyRomanceVal);
+    gv.SetInt(rivalryPlotInt, 1);
+    if (isVanillaRomanceOption)
+    {
+        gv.SetInt(romanticInterestPlotInt, currentBuddyRomanceVal);
+        gv.SetInt(sexualInterestPlotInt, currentBuddyRomanceVal);
+    }
+    else
+    {
+        gv.SetInt(romanticInterestPlotInt, -1);
+        gv.SetInt(sexualInterestPlotInt, -1);
+    }
+    return TRUE;
+}
+
+
+
+public function bool F99267(BioWorldInfo bioWorld, int Argument)
+{
+    local int _note_ThisIsUnsafe_ThisConditionalHasSideEffectsForInitialization;
+    local bool Thane_Krios;
+    local bool isVanillaRomanceOption;
+    local bool isVanillaShepardFemale;
+    local int charPrefixPart;
+    local BioGlobalVariableTable gv;
+    local int currentBuddyRomanceVal;
+    local int friendshipPlotInt;
+    local int genderPlotInt;
+    local int hereditaryPlotInt;
+    local int loyaltyPlotInt;
+    local int professionPlotInt;
+    local int rivalryPlotInt;
+    local int romanticInterestPlotInt;
+    local int sexualInterestPlotInt;
+    
+    gv = bioWorld.GetGlobalVariables();
+    currentBuddyRomanceVal = gv.GetInt(271);
+    isVanillaShepardFemale = gv.GetBool(66);
+    if (isVanillaShepardFemale)
+    {
+        isVanillaRomanceOption = TRUE;
+    }
+    else
+    {
+        isVanillaRomanceOption = FALSE;
+    }
+    friendshipPlotInt = 67311;
+    rivalryPlotInt = 67361;
+    sexualInterestPlotInt = 67381;
+    romanticInterestPlotInt = 67371;
+    gv.SetInt(friendshipPlotInt, currentBuddyRomanceVal);
+    gv.SetInt(rivalryPlotInt, 1);
+    if (isVanillaRomanceOption)
+    {
+        gv.SetInt(romanticInterestPlotInt, currentBuddyRomanceVal);
+        gv.SetInt(sexualInterestPlotInt, currentBuddyRomanceVal);
+    }
+    else
+    {
+        gv.SetInt(romanticInterestPlotInt, -1);
+        gv.SetInt(sexualInterestPlotInt, -1);
+    }
+    return TRUE;
+}
+
+
+
