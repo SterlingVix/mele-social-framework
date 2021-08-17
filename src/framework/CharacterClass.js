@@ -13,19 +13,17 @@ class CharacterClass {
     this.hereditary = config.hereditary; // 33,
     this.profession = config.profession; // 35,
 
-    if (this.isShepard) {
-      this.hereditary = _.findKey(Hereditaries, 'Human');
-      this.profession = _.findKey(Professions, 'Soldier');
-    } else {
-      this.friendship = config.friendship; // 31, // protagonist, supporter
+    // if (!this.isShepard) {
       this.gamesWithVanillaRomanceFemale = config.gamesWithVanillaRomanceFemale || [];
       this.gamesWithVanillaRomanceMale = config.gamesWithVanillaRomanceMale || [];
-      this.loyalty = config.loyalty; // 34,
-      this.rivalry = config.rivalry; // 36, // adversary, antagonist
-      this.romanticInterest = config.romanticInterest; // 37,
-      this.sexualInterest = config.sexualInterest; // 38,
       this.vanillaBuddyRomancePlotInt = config.vanillaBuddyRomancePlotInt;
-    }
+
+      // this.friendship = config.friendship; // 31, // protagonist, supporter
+      // this.loyalty = config.loyalty; // 34,
+      // this.rivalry = config.rivalry; // 36, // adversary, antagonist
+      // this.romanticInterest = config.romanticInterest; // 37,
+      // this.sexualInterest = config.sexualInterest; // 38,
+    // }
 
     this.conditionals = {};
     this.genConditionals();

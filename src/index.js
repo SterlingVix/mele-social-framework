@@ -5,6 +5,7 @@ import {
   LE1Dir,
   LE2CndFile,
   LE2Dir,
+  LE2InitFuncs,
   LE2ModsDirSringsFile,
   LE2TerseTransApiFile,
   LE2TransDecrFile,

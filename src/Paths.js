@@ -10,6 +10,7 @@ export const LE2CndApiFile = path.resolve(LE2Dir, 'LE2ConditionalsAPI.txt');
 export const LE2TerseCndApiFile = path.resolve(LE2Dir, 'LE2TerseCndAPI.txt');
 export const LE2TerseTransApiFile = path.resolve(LE2Dir, 'LE2TerseTransAPI.txt');
 export const LE2CndFile = path.resolve(LE2Dir, 'PlotManager.pcc.txt');
+export const LE2InitFuncs = path.resolve(LE2Dir, 'LE2InitFuncs.txt');
 export const LE2TransDecrFile = path.resolve(LE2Dir, 'TransDecr.txt');
 export const LE2TransIncrFile = path.resolve(LE2Dir, 'TransIncr.txt');
 export const LE2TransSetFile = path.resolve(LE2Dir, 'TransSet.txt');
