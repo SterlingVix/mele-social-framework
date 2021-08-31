@@ -45,12 +45,14 @@ nStateTrans.+(digits)
 ### Gender
 ```textmate
 // Conditions
-29911 ==> Shepard gender identity
-          1: 'Female',
-          2: 'Genderqueer',
-          3: 'Male',
-          4: 'Non-binary',
-          5: 'Transgendered',
+F63321 ==> Shepard gender identity
+  11: 'Female',
+  12: 'Genderqueer',
+  13: 'Male',
+  14: 'Mono-gendered',
+  15: 'Non-binary',
+  16: 'Non-gendered',
+  17: 'Transgendered',
 
 
 ```
@@ -58,10 +60,208 @@ nStateTrans.+(digits)
 ## NOTES:
 For all games:
 * Validate current relationship state on __event__ (prob. entering Normandy).
-  ** Check for newly-installed relationship mods / bools (to manage mods mid-install).
+  * Check for newly-installed relationship mods / bools (to manage mods mid-install).
 * Replace all social dialog BOOL checks / CND checks w/ Social Framework CND checks.
 
+## Changes from vanilla:
 
+> #### Initialize SF Plot Ints from Vanilla Plot vals:
+###### LE1:
+```
+
+```
+###### LE2:
+```
+Currently this is a series of Conditionals that initialize SF Plot Ints as a side effect of running. This is far from ideal, but it is fast for prototyping.
+```
+###### LE3:
+```
+
+```
+
+> #### Replaced Bools/Ints with Conditionals in dialogs:
+###### LE1:
+```
+
+```
+###### LE2:
+```
+- Aria T'Loak
+
+- Armando-Owen Bailey
+
+- David Anderson
+
+- Donnel Udina
+
+- EDI
+
+- Emily Wong
+
+- Gabriella Daniels
+
+- Garrus Vakarian
+
+- Gianni Parasini
+
+- Gregory Adams
+
+- Grunt
+
+- Illusive Man
+
+- Jack
+
+- Jacob Taylor
+
+- Joker Moreau
+
+- Kaidan Alenko
+
+- Karin Chakwas
+
+- Kasumi Goto
+
+- Kelly Chambers
+
+- Kenneth Donnelly
+
+- Legion
+
+- Liara T'Soni
+
+- Miranda Lawson
+
+- Mordin Solus
+
+- Morinth
+
+- Samara
+
+- Shepard
+
+- Steven Hackett
+
+- Tali'Zorah vas Normandy
+
+- Thane Krios
+
+- Urdnot Wrex
+
+- Zaeed Massani
+
+```
+###### LE3:
+```
+
+```
+
+> #### Replace Vanilla Conditionals with SF Conditionals:
+
+=REGEXEXTRACT(C2-D2, "(Aria|T\'Loak|TLoak|Armando-Owen|Armando|Owen|Bailey|Ashley|Williams|David|Anderson|Diana|Allers|Donnel|Udina|EDI|Emily|Wong|Eve|Urdnot|Bakara|Gabriella|Daniels|Garrus|Vakarian|Garus|Gianni|Parasini|Gregory|Adams|Grunt|Krogan|Illusive|Man|Ilusive|Ilussive|Jack|Convict|Jacob|Taylor|Leading|James|Vega|Javik|Joker|Moreau|Kaidan|Alenko|Karin|Chakwas|Kasumi|Goto|Thief|Kelly|Chambers|Yeoman|Kenneth|Donnelly|Legion|Geth|Liara|T\'Soni|TSoni|Miranda|Lawson|Vixen|Mordin|Solus|Professor|Morinth|Nyreen|Kandros|Samantha|Traynor|Samara|Mystic|Steve|Cortez|Steven|Hackett|Tali\'Zorah|Tali|Zorah|vas|Normandy|Thane|Krios|Assassin|Urdnot|Wrex|Zaeed|Massani|Veteran)")
+
+
+
+=REGEXEXTRACT(C2, "Adams|Player|Vampire|Shepard|Alenko|Aria|Ashley|Assassin|Bakara|Chakwas|Chambers|Convict|Cortez|Daniels|David|Diana|Donnel|Donnelly|EDI|Emily|Eve|Gabriella|Garrus|Garus|Geth|Gianni|Goto|Gregory|Grunt|Hackett|Illusive|Ilusive|Ilussive|Jack|Jacob|Joker|Kaidan|Karin|Kasumi|Kelly|Kenneth|Krios|Krogan|Lawson|Leading|Legion|Liara|Massani|Miranda|Mordin|Moreau|Morinth|Mystic|Normandy|Parasini|Professor|Samara|Solus|Tali|Taylor|Thane|Thief|TLoak|TSoni|Udina|Urdnot|Vakarian|Veteran|Vixen|Williams|Wong|Wrex|Yeoman|Zaeed|Zorah")
+=REGEXEXTRACT(D2, "Adams|Player|Vampire|Shepard|Alenko|Aria|Ashley|Assassin|Bakara|Chakwas|Chambers|Convict|Cortez|Daniels|David|Diana|Donnel|Donnelly|EDI|Emily|Eve|Gabriella|Garrus|Garus|Geth|Gianni|Goto|Gregory|Grunt|Hackett|Illusive|Ilusive|Ilussive|Jack|Jacob|Joker|Kaidan|Karin|Kasumi|Kelly|Kenneth|Krios|Krogan|Lawson|Leading|Legion|Liara|Massani|Miranda|Mordin|Moreau|Morinth|Mystic|Normandy|Parasini|Professor|Samara|Solus|Tali|Taylor|Thane|Thief|TLoak|TSoni|Udina|Urdnot|Vakarian|Veteran|Vixen|Williams|Wong|Wrex|Yeoman|Zaeed|Zorah")
+
+###### LE1:
+```
+
+```
+###### LE2:
+```
+- Aria T'Loak
+
+- Armando-Owen Bailey
+
+- David Anderson
+
+- Donnel Udina
+
+- EDI
+
+- Emily Wong
+
+- Gabriella Daniels
+
+- Garrus Vakarian
+
+- Gianni Parasini
+
+- Gregory Adams
+
+- Grunt
+
+- Illusive Man
+
+- Jack
+
+- Jacob Taylor
+
+- Joker Moreau
+
+- Kaidan Alenko
+
+- Karin Chakwas
+
+- Kasumi Goto
+
+- Kelly Chambers
+
+- Kenneth Donnelly
+
+- Legion
+
+- Liara T'Soni
+
+- Miranda Lawson
+
+- Mordin Solus
+
+- Morinth
+
+- Samara
+
+- Shepard
+
+- Steven Hackett
+
+- Tali'Zorah vas Normandy
+
+- Thane Krios
+
+- Urdnot Wrex
+
+- Zaeed Massani
+
+```
+###### LE3:
+```
+
+```
+
+> #### Add SF Transitions to dialogs (NOTE: should not typically remove the original Transitions):
+###### LE1:
+```
+
+```
+###### LE2:
+```
+
+```
+###### LE3:
+```
+
+```
+
+> ####
+
+> ####
+
+> ####
+
+> ####
 
 
 
@@ -80,68 +280,442 @@ For reference, see:
 */     LE2     /*
 //// Bool
 (Search: attract flirt kiss love male relat romanc sex)
+3227    Female
+66      female player
+3423    Garrus flirt enabled
+5207    Garrus had sex
+6036    Garrus no sex
+6682    Garrus romance active
+6683    Garrus romance breakup
+3660    Garrus romance ended poorly
+6681    Garrus romance resolution
+3161    Gianni no romance
+3160    Gianni romance
+5208    Jack
+6671    Jack fling
+6035    Jack no sex
+6673    Jack romance active
+6674    Jack romance breakup
+3270    Jack romance ended poorly
+6672    Jack romance resolution
+3894    Jacob declared romance
+3892    Jacob had sex
+6679    Jacob romance active
+6680    Jacob romance breakup
+3799    Jacob romance ended mutual
+3472    Jacob romance ended poorly
+6678    Jacob romance resolution
+3887    Jacob sex put off
+3800    Jacob.no I love you
+6923    Liara finale kissed her
+6941    Liara goodnight kiss
+2511    light romance done
+3226    Male
 1528    ME1 Ash romance
 1529    ME1 Kaidan romance
 1530    ME1 Liara romance
 1926    ME1 no romance
-2511    light romance done
-2628    Yeoman.flirt
-2633    Yeoman.flirt
-3160    Gianni romance
-3161    Gianni no romance
-3226    Male
-3227    Female
-3270    Jack romance ended poorly
-3304    Miranda romance ended poorly
-3307    Tali romance ended poorly
-3310    Thane romance ended poorly
-3340    Tali R3 reached flirt
-3423    Garrus flirt enabled
-3487    Miranda flirted
-3472    Jacob romance ended poorly
-3660    Garrus romance ended poorly
-3799    Jacob romance ended mutual
-3800    Jacob.no I love you
-3887    Jacob sex put off
-3892    Jacob had sex
-3894    Jacob declared romance
-3926    Tali play love scene
-4769    Miranda bad boy kiss
-5206    Thane had sex
-5207    Garrus had sex
-5208    Jack
 5209    Miranda
-5751    Mystic had faux romance
-6033    Tali no sex
+4769    Miranda bad boy kiss
+3487    Miranda flirted
 6034    Miranda no sex
-6035    Jack no sex
-6036    Garrus no sex
-6037    Thane no sex
-66      female player
-6665    Miranda romance resolution
 6666    Miranda romance active
 6667    Miranda romance breakup
-6668    Tali romance resolution
+3304    Miranda romance ended poorly
+6665    Miranda romance resolution
+6684    Morinth warning
+5751    Mystic had faux romance
+7333    Play love scene
+6685    Samara romance
+6033    Tali no sex
+3926    Tali play love scene
+3340    Tali R3 reached flirt
 6669    Tali romance active
 6670    Tali romance breakup
-6671    Jack fling
-6672    Jack romance resolution
-6673    Jack romance active
-6674    Jack romance breakup
-6675    Thane romance resolution
+3307    Tali romance ended poorly
+6668    Tali romance resolution
+5206    Thane had sex
+6037    Thane no sex
 6676    Thane romance active
 6677    Thane romance breakup
+3310    Thane romance ended poorly
+6675    Thane romance resolution
+2628    Yeoman.flirt
+2633    Yeoman.flirt
+
+
+
+
+66      female player
+  F49 F50 F898 F553 F558 F559 F1353 F1354 F1497 F1498 F1499
+  F1500 F1501 F1502 F1503 F1504 F678 F567 F732 F886 F1520
+  F720 F887 F1521 F692 F456 F457 F429 F414
+1528    ME1 Ash romance
+  F1325 F1328 F1482 F453 F454 F2010 F2012 F2013
+1529    ME1 Kaidan romance
+  F1328 F1517 F1483 F2010 F2011 F2013
+1530    ME1 Liara romance
+  F1328 F1518 F2011 F2012 F2013
+1926    ME1 no romance
+  F2010 F2011 F2012
+2511    light romance done
+
+2628    Yeoman.flirt
+
+2633    Yeoman.flirt
+
+3160    Gianni romance
+
+3161    Gianni no romance
+
+3226    Male
+
+3227    Female
+
+3270    Jack romance ended poorly
+  F672 F686
+3304    Miranda romance ended poorly
+  F684 F685
+3307    Tali romance ended poorly
+  F697 F698 F1638
+3310    Thane romance ended poorly
+  F709 F710
+3340    Tali R3 reached flirt
+
+3423    Garrus flirt enabled
+  F732
+3472    Jacob romance ended poorly
+  F898 F957 F959 F962
+3487    Miranda flirted
+
+3660    Garrus romance ended poorly
+  F899 F900
+3799    Jacob romance ended mutual
+  F898 F957 F959
+3800    Jacob.no I love you
+
+3887    Jacob sex put off
+  F1595 F1589 F1584 F1642
+3892    Jacob had sex
+  F1409 F1595 F1589 F1584 F1641
+3894    Jacob declared romance
+
+3926    Tali play love scene
+  F1411 F1582 F1593 F1599
+4769    Miranda bad boy kiss
+
+5206    Thane had sex
+  F1408 F1587 F1592 F1598
+5207    Garrus had sex
+  F766 F1410 F1586 F1591 F1597
+5208    Jack
+  F1412 F1585 F1590 F1596
+5209    Miranda
+  F1583 F1588 F1594 F1413
+5751    Mystic had faux romance
+
+6033    Tali no sex
+  F1582 F1593 F1599
+6034    Miranda no sex
+  F1583 F1588 F1594
+6035    Jack no sex
+  F1585 F1590 F1596
+6036    Garrus no sex
+  F766 F1586 F1591 F1597
+6037    Thane no sex
+  F1587 F1592 F1598
+6665    Miranda romance resolution
+
+6666    Miranda romance active
+
+6667    Miranda romance breakup
+
+6668    Tali romance resolution
+
+6669    Tali romance active
+
+6670    Tali romance breakup
+
+6671    Jack fling
+
+6672    Jack romance resolution
+
+6673    Jack romance active
+
+6674    Jack romance breakup
+
+6675    Thane romance resolution
+
+6676    Thane romance active
+
+6677    Thane romance breakup
+
 6678    Jacob romance resolution
+
 6679    Jacob romance active
+
 6680    Jacob romance breakup
+
 6681    Garrus romance resolution
+
 6682    Garrus romance active
+
 6683    Garrus romance breakup
+
 6684    Morinth warning
+
 6685    Samara romance
+
 6923    Liara finale kissed her
+
 6941    Liara goodnight kiss
+
 7333    Play love scene
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+66      female player
+  F49 F50 F898 F553 F558 F559 F1353 F1354 F1497 F1498 F1499 F1500 F1501 F1502 F1503 F1504 F678 F567 F732 F886 F1520 F720 F887 F1521 F692 F456 F457 F429 F414
+1528    ME1 Ash romance
+  F1325 F1328 F1482 F453 F454 F2010 F2012 F2013
+1529    ME1 Kaidan romance
+  F1328 F1517 F1483 F2010 F2011 F2013
+1530    ME1 Liara romance
+  F1328 F1518 F2011 F2012 F2013
+1926    ME1 no romance
+  F2010 F2011 F2012
+3270    Jack romance ended poorly
+  F672 F686
+3304    Miranda romance ended poorly
+  F684 F685
+3307    Tali romance ended poorly
+  F697 F698 F1638
+3310    Thane romance ended poorly
+  F709 F710
+3423    Garrus flirt enabled
+  F732
+3472    Jacob romance ended poorly
+  F898 F957 F959 F962
+3660    Garrus romance ended poorly
+  F899 F900
+3799    Jacob romance ended mutual
+  F898 F957 F959
+3887    Jacob sex put off
+  F1595 F1589 F1584 F1642
+3892    Jacob had sex
+  F1409 F1595 F1589 F1584 F1641
+3926    Tali play love scene
+  F1411 F1582 F1593 F1599
+5206    Thane had sex
+  F1408 F1587 F1592 F1598
+5207    Garrus had sex
+  F766 F1410 F1586 F1591 F1597
+5208    Jack
+  F1412 F1585 F1590 F1596
+5209    Miranda
+  F1583 F1588 F1594 F1413
+6033    Tali no sex
+  F1582 F1593 F1599
+6034    Miranda no sex
+  F1583 F1588 F1594
+6035    Jack no sex
+  F1585 F1590 F1596
+6036    Garrus no sex
+  F766 F1586 F1591 F1597
+6037    Thane no sex
+  F1587 F1592 F1598
+
+
+
+
+
+
+F49
+F50
+F414
+F429
+F453
+F454
+F456
+F457
+F553
+F558
+F559
+F567
+F672
+F678
+F684
+F685
+F686
+F692
+F697
+F698
+F709
+F710
+F720
+F732
+F766
+F886
+F887
+F898
+F899
+F900
+F957
+F959
+F962
+F1325
+F1328
+F1353
+F1354
+F1408
+F1409
+F1410
+F1411
+F1412
+F1413
+F1482
+F1483
+F1497
+F1498
+F1499
+F1500
+F1501
+F1502
+F1503
+F1504
+F1517
+F1518
+F1520
+F1521
+F1582
+F1583
+F1584
+F1585
+F1586
+F1587
+F1588
+F1589
+F1590
+F1591
+F1592
+F1593
+F1594
+F1595
+F1596
+F1597
+F1598
+F1599
+F1638
+F1641
+F1642
+F2010
+F2011
+F2012
+F2013
+
+
+
+
+
+49|50|414|429|453|454|456|457|553|558|559|567|672|678|684|685|686|692|697|698|709|710|720|732|766|886|887|898|899|900|957|959|962|1325|1328|1353|1354|1408|1409|1410|1411|1412|1413|1482|1483|1497|1498|1499|1500|1501|1502|1503|1504|1517|1518|1520|1521|1582|1583|1584|1585|1586|1587|1588|1589|1590|1591|1592|1593|1594|1595|1596|1597|1598|1599|1638|1641|1642|2010|2011|2012|2013
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // 7103 ??? DLC_01_Test ME3 player romancing Ash
 // 7148 ??? DLC_01_Test ME3 chose paragon romance final
@@ -167,6 +741,10 @@ For reference, see:
 275     ME2 Global buddy/relationship Mystic
 616     Captain's Cabin romance present
 
+GetInt\((197|213|266|267|268|270|271|272|273|274|275|616)\)
+
+
+NOTE: LE2 Transition 4267 === "Increment question count". See how this works.
 
 
 //// Floats (none)

@@ -86,7 +86,7 @@ export const CharactersById = {
   35: `Donnel Udina`,
   36: `EDI`,
   37: `Emily Wong`,
-  38: `Eve Urdnot Bakara`, // NOTE: "Eve" prevents a collision with "Urdnot Bakara" & "Urdnot Wrex"
+  38: `Eve Urdnot Bakara`,
   39: `Gabriella Daniels`,
   40: `Garrus Vakarian`,
   41: `Gianni Parasini`,

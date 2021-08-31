@@ -12,6 +12,21 @@ export const forEachCharacter = (mapFunc) =>
 export const padCharName = (charName) =>
   _.pad(charName, 20, ' ');
 
+const LE2CharNicknames = [
+  `Assassin`,
+  `Convict`,
+  `Garrus`,
+  `Geth`,
+  `Grunt`,
+  `Leading`,
+  `Mystic`,
+  `Professor`,
+  `Tali`,
+  `Thief`,
+  `Veteran`,
+  `Vixen`,
+];
+
 const charactersConfigs = [
   {
     characterId: _.toInteger(_.findKey(CharactersById, (charName) => charName === `Aria T'Loak`)),
